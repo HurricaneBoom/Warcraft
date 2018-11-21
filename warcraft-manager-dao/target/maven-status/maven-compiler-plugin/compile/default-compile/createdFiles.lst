@@ -1,0 +1,6 @@
+com\warcraft\mapper\StoreInfoMapper.class
+com\warcraft\mapper\BossInfoMapper.class
+com\warcraft\mapper\IndentMapper.class
+com\warcraft\mapper\ManagerInfoMapper.class
+com\warcraft\mapper\BuyerInfoMapper.class
+com\warcraft\mapper\DelivererInfoMapper.class

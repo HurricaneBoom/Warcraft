@@ -1,0 +1,6 @@
+com\warcraft\service\BossInfoService.class
+com\warcraft\service\BuyerInfoService.class
+com\warcraft\service\IndentService.class
+com\warcraft\service\DelivererInfoService.class
+com\warcraft\service\StoreInfoService.class
+com\warcraft\service\ManagerInfoService.class

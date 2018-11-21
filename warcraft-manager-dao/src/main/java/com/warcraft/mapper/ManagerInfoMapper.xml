@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.warcraft.mapper.ManagerInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.warcraft.pojo.ManagerInfo" >
+    <id column="manager_id" property="managerId" jdbcType="BIGINT" />
+    <result column="manager_username" property="managerUsername" jdbcType="VARCHAR" />
+    <result column="manager_password" property="managerPassword" jdbcType="VARCHAR" />
+    <result column="manager_phone" property="managerPhone" jdbcType="VARCHAR" />
+    <result column="manager_email" property="managerEmail" jdbcType="VARCHAR" />
+    <result column="manger_created" property="mangerCreated" jdbcType="TIMESTAMP" />
+    <result column="manger_updated" property="mangerUpdated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    manager_id, manager_username, manager_password, manager_phone, manager_email, manger_created, 
+    manger_updated
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.warcraft.pojo.ManagerInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from manager_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from manager_info
+    where manager_id = #{managerId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from manager_info
+    where manager_id = #{managerId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.warcraft.pojo.ManagerInfoExample" >
+    delete from manager_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.warcraft.pojo.ManagerInfo" >
+    insert into manager_info (manager_id, manager_username, manager_password, 
+      manager_phone, manager_email, manger_created, 
+      manger_updated)
+    values (#{managerId,jdbcType=BIGINT}, #{managerUsername,jdbcType=VARCHAR}, #{managerPassword,jdbcType=VARCHAR}, 
+      #{managerPhone,jdbcType=VARCHAR}, #{managerEmail,jdbcType=VARCHAR}, #{mangerCreated,jdbcType=TIMESTAMP}, 
+      #{mangerUpdated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.warcraft.pojo.ManagerInfo" >
+    insert into manager_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="managerId != null" >
+        manager_id,
+      </if>
+      <if test="managerUsername != null" >
+        manager_username,
+      </if>
+      <if test="managerPassword != null" >
+        manager_password,
+      </if>
+      <if test="managerPhone != null" >
+        manager_phone,
+      </if>
+      <if test="managerEmail != null" >
+        manager_email,
+      </if>
+      <if test="mangerCreated != null" >
+        manger_created,
+      </if>
+      <if test="mangerUpdated != null" >
+        manger_updated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="managerId != null" >
+        #{managerId,jdbcType=BIGINT},
+      </if>
+      <if test="managerUsername != null" >
+        #{managerUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="managerPassword != null" >
+        #{managerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="managerPhone != null" >
+        #{managerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="managerEmail != null" >
+        #{managerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="mangerCreated != null" >
+        #{mangerCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mangerUpdated != null" >
+        #{mangerUpdated,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.warcraft.pojo.ManagerInfoExample" resultType="java.lang.Integer" >
+    select count(*) from manager_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update manager_info
+    <set >
+      <if test="record.managerId != null" >
+        manager_id = #{record.managerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.managerUsername != null" >
+        manager_username = #{record.managerUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.managerPassword != null" >
+        manager_password = #{record.managerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.managerPhone != null" >
+        manager_phone = #{record.managerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.managerEmail != null" >
+        manager_email = #{record.managerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mangerCreated != null" >
+        manger_created = #{record.mangerCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mangerUpdated != null" >
+        manger_updated = #{record.mangerUpdated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update manager_info
+    set manager_id = #{record.managerId,jdbcType=BIGINT},
+      manager_username = #{record.managerUsername,jdbcType=VARCHAR},
+      manager_password = #{record.managerPassword,jdbcType=VARCHAR},
+      manager_phone = #{record.managerPhone,jdbcType=VARCHAR},
+      manager_email = #{record.managerEmail,jdbcType=VARCHAR},
+      manger_created = #{record.mangerCreated,jdbcType=TIMESTAMP},
+      manger_updated = #{record.mangerUpdated,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warcraft.pojo.ManagerInfo" >
+    update manager_info
+    <set >
+      <if test="managerUsername != null" >
+        manager_username = #{managerUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="managerPassword != null" >
+        manager_password = #{managerPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="managerPhone != null" >
+        manager_phone = #{managerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="managerEmail != null" >
+        manager_email = #{managerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="mangerCreated != null" >
+        manger_created = #{mangerCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mangerUpdated != null" >
+        manger_updated = #{mangerUpdated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where manager_id = #{managerId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.warcraft.pojo.ManagerInfo" >
+    update manager_info
+    set manager_username = #{managerUsername,jdbcType=VARCHAR},
+      manager_password = #{managerPassword,jdbcType=VARCHAR},
+      manager_phone = #{managerPhone,jdbcType=VARCHAR},
+      manager_email = #{managerEmail,jdbcType=VARCHAR},
+      manger_created = #{mangerCreated,jdbcType=TIMESTAMP},
+      manger_updated = #{mangerUpdated,jdbcType=TIMESTAMP}
+    where manager_id = #{managerId,jdbcType=BIGINT}
+  </update>
+</mapper>

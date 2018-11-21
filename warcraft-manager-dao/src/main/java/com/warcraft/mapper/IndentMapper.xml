@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.warcraft.mapper.IndentMapper" >
+  <resultMap id="BaseResultMap" type="com.warcraft.pojo.Indent" >
+    <id column="indent_id" property="indentId" jdbcType="BIGINT" />
+    <result column="buyer_id" property="buyerId" jdbcType="BIGINT" />
+    <result column="shopping_id" property="shoppingId" jdbcType="BIGINT" />
+    <result column="store_id" property="storeId" jdbcType="BIGINT" />
+    <result column="deliverer_id" property="delivererId" jdbcType="BIGINT" />
+    <result column="trolley_id" property="trolleyId" jdbcType="BIGINT" />
+    <result column="indent_singletime" property="indentSingletime" jdbcType="TIMESTAMP" />
+    <result column="indent_starttime" property="indentStarttime" jdbcType="TIMESTAMP" />
+    <result column="indent_endtime" property="indentEndtime" jdbcType="TIMESTAMP" />
+    <result column="indent_status" property="indentStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    indent_id, buyer_id, shopping_id, store_id, deliverer_id, trolley_id, indent_singletime, 
+    indent_starttime, indent_endtime, indent_status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.warcraft.pojo.IndentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from indent
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from indent
+    where indent_id = #{indentId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from indent
+    where indent_id = #{indentId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.warcraft.pojo.IndentExample" >
+    delete from indent
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.warcraft.pojo.Indent" >
+    insert into indent (indent_id, buyer_id, shopping_id, 
+      store_id, deliverer_id, trolley_id, 
+      indent_singletime, indent_starttime, 
+      indent_endtime, indent_status)
+    values (#{indentId,jdbcType=BIGINT}, #{buyerId,jdbcType=BIGINT}, #{shoppingId,jdbcType=BIGINT}, 
+      #{storeId,jdbcType=BIGINT}, #{delivererId,jdbcType=BIGINT}, #{trolleyId,jdbcType=BIGINT}, 
+      #{indentSingletime,jdbcType=TIMESTAMP}, #{indentStarttime,jdbcType=TIMESTAMP}, 
+      #{indentEndtime,jdbcType=TIMESTAMP}, #{indentStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.warcraft.pojo.Indent" >
+    insert into indent
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="indentId != null" >
+        indent_id,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="shoppingId != null" >
+        shopping_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="delivererId != null" >
+        deliverer_id,
+      </if>
+      <if test="trolleyId != null" >
+        trolley_id,
+      </if>
+      <if test="indentSingletime != null" >
+        indent_singletime,
+      </if>
+      <if test="indentStarttime != null" >
+        indent_starttime,
+      </if>
+      <if test="indentEndtime != null" >
+        indent_endtime,
+      </if>
+      <if test="indentStatus != null" >
+        indent_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="indentId != null" >
+        #{indentId,jdbcType=BIGINT},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="shoppingId != null" >
+        #{shoppingId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="delivererId != null" >
+        #{delivererId,jdbcType=BIGINT},
+      </if>
+      <if test="trolleyId != null" >
+        #{trolleyId,jdbcType=BIGINT},
+      </if>
+      <if test="indentSingletime != null" >
+        #{indentSingletime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indentStarttime != null" >
+        #{indentStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indentEndtime != null" >
+        #{indentEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indentStatus != null" >
+        #{indentStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.warcraft.pojo.IndentExample" resultType="java.lang.Integer" >
+    select count(*) from indent
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update indent
+    <set >
+      <if test="record.indentId != null" >
+        indent_id = #{record.indentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.buyerId != null" >
+        buyer_id = #{record.buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.shoppingId != null" >
+        shopping_id = #{record.shoppingId,jdbcType=BIGINT},
+      </if>
+      <if test="record.storeId != null" >
+        store_id = #{record.storeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.delivererId != null" >
+        deliverer_id = #{record.delivererId,jdbcType=BIGINT},
+      </if>
+      <if test="record.trolleyId != null" >
+        trolley_id = #{record.trolleyId,jdbcType=BIGINT},
+      </if>
+      <if test="record.indentSingletime != null" >
+        indent_singletime = #{record.indentSingletime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.indentStarttime != null" >
+        indent_starttime = #{record.indentStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.indentEndtime != null" >
+        indent_endtime = #{record.indentEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.indentStatus != null" >
+        indent_status = #{record.indentStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update indent
+    set indent_id = #{record.indentId,jdbcType=BIGINT},
+      buyer_id = #{record.buyerId,jdbcType=BIGINT},
+      shopping_id = #{record.shoppingId,jdbcType=BIGINT},
+      store_id = #{record.storeId,jdbcType=BIGINT},
+      deliverer_id = #{record.delivererId,jdbcType=BIGINT},
+      trolley_id = #{record.trolleyId,jdbcType=BIGINT},
+      indent_singletime = #{record.indentSingletime,jdbcType=TIMESTAMP},
+      indent_starttime = #{record.indentStarttime,jdbcType=TIMESTAMP},
+      indent_endtime = #{record.indentEndtime,jdbcType=TIMESTAMP},
+      indent_status = #{record.indentStatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warcraft.pojo.Indent" >
+    update indent
+    <set >
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=BIGINT},
+      </if>
+      <if test="shoppingId != null" >
+        shopping_id = #{shoppingId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="delivererId != null" >
+        deliverer_id = #{delivererId,jdbcType=BIGINT},
+      </if>
+      <if test="trolleyId != null" >
+        trolley_id = #{trolleyId,jdbcType=BIGINT},
+      </if>
+      <if test="indentSingletime != null" >
+        indent_singletime = #{indentSingletime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indentStarttime != null" >
+        indent_starttime = #{indentStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indentEndtime != null" >
+        indent_endtime = #{indentEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indentStatus != null" >
+        indent_status = #{indentStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where indent_id = #{indentId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.warcraft.pojo.Indent" >
+    update indent
+    set buyer_id = #{buyerId,jdbcType=BIGINT},
+      shopping_id = #{shoppingId,jdbcType=BIGINT},
+      store_id = #{storeId,jdbcType=BIGINT},
+      deliverer_id = #{delivererId,jdbcType=BIGINT},
+      trolley_id = #{trolleyId,jdbcType=BIGINT},
+      indent_singletime = #{indentSingletime,jdbcType=TIMESTAMP},
+      indent_starttime = #{indentStarttime,jdbcType=TIMESTAMP},
+      indent_endtime = #{indentEndtime,jdbcType=TIMESTAMP},
+      indent_status = #{indentStatus,jdbcType=VARCHAR}
+    where indent_id = #{indentId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="findAcceptedIndent" resultMap="BaseResultMap">
+  	select * from indent where indent_status='accepted'
+  </select>
+  
+  <insert id="insertIndentDelivering">
+  	insert into deliverer_order(deliverer_id,deliverer_order_starttime,eliverer_order_date,indent_id) (select 1,now(),now(),indent_id from indent where indent_status='accepted')
+  </insert>
+  <update id="updateIndentDelivering">
+  	update indent set indent_starttime=now(),deliverer_id=1,indent_status='delivering' where indent_status='accepted'
+  </update>
+</mapper>

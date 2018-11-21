@@ -1,0 +1,9 @@
+com\warcraft\service\impl\BuyerInfoServiceImpl.class
+com\warcraft\service\impl\DelivererInfoServiceImpl.class
+com\warcraft\jedis\JedisClientCluster.class
+com\warcraft\jedis\JedisClientPool.class
+com\warcraft\service\impl\ManagerInfoServiceImpl.class
+com\warcraft\service\impl\StoreInfoServiceImpl.class
+com\warcraft\service\impl\BossInfoServiceImpl.class
+com\warcraft\service\impl\IndentServiceImpl.class
+com\warcraft\jedis\JedisClient.class
