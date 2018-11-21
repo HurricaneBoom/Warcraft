@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Home</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<!------ js ------>
+<script src="js/jquery.min.js"> </script>
+<!------ js ------>
+<!---- start-smoth-scrolling---->
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+<!---- start-smoth-scrolling---->
+<!--- fonts --->
+<link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,700italic,900italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Monda:400,700' rel='stylesheet' type='text/css'>
+<!--- fonts --->
+</head>
+<body>
+	<!--- header-top ---->
+	<div id="home" class="header-top">
+		<!--- container ---->
+		<div class="container">
+			<div class="header-logo">
+			<!--<a href="#">Warcraft</a>-->
+				</div>
+				<div class="header-sub-text">
+			<h2>Warcraft Given You Good Time</h2>
+			<p>Vestibulum ornare cursus nisl, fermentum tincidunt libero pretium et. Maecenas interdum ligula non
+			<small>fermentum fringilla.</small></p>
+			</div>
+		<div class="header-top-grids">
+			<div class="col-md-4 about-nav4">
+				<a class="scroll" href="http://localhost:8090/doLoginUI.do"><span class="nav-icon4"> </span><label id="boss_button">Boss</label></a>
+				<a href="http://localhost:8090/doLoginUI.do">.</a>
+			</div>
+			<div class="col-md-4 about-nav5">
+				<a class="scroll" href="#portfolio"><span class="nav-icon5"> </span><label>Menu</label></a>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<div class="header-bottom-grids">
+			<div class="col-md-6 left-grid text-left">
+					<div class="about-nav">
+						<a class="scroll" href="http://localhost:8095/"><span class="nav-icon"> </span><label id="deliverer_button">Deliverer</label></a>
+						<a href="http://localhost:8095/doLoginUI.do">.</a>
+						
+					</div>
+					<div class="about-nav1">
+						<a class="scroll" href="#team"><span class="nav-icon1"> </span><label id="buyer_button">Buyer</label></a>
+						<a href="http://localhost:8089/doIndexUI.do">.</a>
+					</div>
+					<div class="clearfix"> </div>				
+			</div>
+			<div class="col-md-6 right-grid text-right">
+					<div class="about-nav2">
+						<a class="scroll" href="#blog"><span class="nav-icon2"> </span><label>Free</label></a>
+					</div>
+					<div class="about-nav3">
+						<a class="scroll" href="#contact"><span class="nav-icon3"> </span><label>Join</label></a>
+					</div>
+					<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+		<div class="arrow-grid">
+			<div class="arrow">
+				<a class="scroll" href="#header-nav"><span> </span></a>
+			</div>
+		</div>
+		</div>
+		<!--- container ---->
+	</div>
+<!--- //header-top ---->
+<!--- header-bottom ---->
+<!-- Sticky Nav --->
+
+
+</body>
+</html>
