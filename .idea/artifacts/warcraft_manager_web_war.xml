@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="warcraft-manager-web:war">
+    <output-path>$PROJECT_DIR$/../warcraft-manager-web/target</output-path>
+    <root id="archive" name="warcraft-manager-web.war">
+      <element id="artifact" artifact-name="warcraft-manager-web:war exploded" />
+    </root>
+  </artifact>
+</component>

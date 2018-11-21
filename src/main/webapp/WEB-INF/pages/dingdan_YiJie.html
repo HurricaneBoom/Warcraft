@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simple Responsive Admin</title>
+<!-- BOOTSTRAP STYLES-->
+<link href="assets/css/bootstrap.css" rel="stylesheet" />
+<!-- FONTAWESOME STYLES-->
+<link href="assets/css/font-awesome.css" rel="stylesheet" />
+<!-- CUSTOM STYLES-->
+<link href="assets/css/custom.css" rel="stylesheet" />
+<!-- GOOGLE FONTS-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css' />
+</head>
+<body>
+
+			<div>
+			<h3 class="box-title">已接订单</h3>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body table-responsive no-padding">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+						   
+							<th>订单id</th>
+							<th>买家id</th>
+							<th>购物车id</th>
+							<th>店铺id</th>
+							<th>外卖员id</th>
+							<th>商家购物车id</th>
+							<th>订单状态</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyId"></tbody>
+				</table>
+				</div>
+			<div id="pageId" class="box-footer clearfix">
+			</div>
+			</div>
+		<script src="assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/stomp.js"></script>
+    <script type="text/javascript">
+    $(function(){
+    	doGetObjects();//ajax
+    })
+  //异步加载服务端数据,并将数据呈现在页面上
+    function doGetObjects(){
+    	// debugger
+    	 console.log("doGetObjects");
+    	 //1.定义请求的url
+    	 var logUrl="doJieShou.do"
+    	 //2.定义请求的参数
+    	 //var pageCurrent=$("#pageId").data("pageCurrent");
+    	 //if(!pageCurrent)pageCurrent=1;
+    	 //var params="pageCurrent="+pageCurrent;
+    	 //var params={"pageCurrent":pageCurrent};
+    	 //点击查询按钮时,获取用户名,基于用户名执行查询操作.
+    	 //var username=$("#searchNameId").val();
+    	 //var params="pageCurrent="+pageCurrent+"&username="+username;
+    	 //if(username)params.username=username;
+    	 //3.发送异步请求
+    	 $.ajax({//底层封装了XMLHttpRequest
+    		 url:logUrl,
+    		 //data:params,
+    		 dataType:"json",
+    		 success:function(result){
+    		   //debugger
+    		   console.log(result);
+    		   doHandleResponseResult(result);
+    		 }
+    	 });//ajax()为jquery中定义异步请求函数
+    	 //如上ajax方法的简写方式
+    	/* $.getJSON(logUrl,params,function(result){
+    		 doHandleResponseResult(result);
+    	 }); */
+    }
+    function doHandleResponseResult(result){//jsonResult
+    	//debugger
+    	if(result.state==1){
+    	  //初始化当前页记录(将日志数据呈现在页面上)
+    	  doSetTableBodyRows(result.data);
+    	  //初始化分页信息(将分页数据呈现在页面上)
+    	 // doSetPagination(result.data);//pageObject
+    	}else{
+    	  alert(result.message);
+    	}
+    }
+    function doSetTableBodyRows(records){
+       //1.获取tbody对象,并清空
+       var tBody=$("#tbodyId");
+       tBody.empty();//清空数据
+       //2.迭代记录,将数据呈现在tbody中
+       //for(var i=0;i<records.length;i++){}
+       for(var i in records){
+       	//2.1构建tr对象
+       	var tr=$("<tr></tr>")
+       	//2.2构建tds对象
+    	console.log(records[i]);
+    	console.log(records);
+       	var tds=doCreateTds(records[i]);
+       	//2.3将td追加到tr中
+       	tr.append(tds);
+       	//2.4将tr追加到tbody中
+       	tBody.append(tr);
+       }
+    }
+    function doCreateTds(row){
+    	 var tds=
+    		"<td>"+row.indentId+"</td>"+
+    	     "<td>"+row.buyerId+"</td>"+
+    	     "<td>"+row.shoppingId+"</td>"+
+    	     "<td>"+row.storeId+"</td>"+
+    	     "<td>"+row.delivererId+"</td>"+
+    	     "<td>"+row.trolleyId+"</td>"+
+    	     "<td>"+row.indentStatus+"</td>";
+        return tds;
+    }
+    </script>
+    
+</body>
+</html>

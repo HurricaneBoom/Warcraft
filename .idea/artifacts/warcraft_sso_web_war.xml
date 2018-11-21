@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="warcraft-sso-web:war">
+    <output-path>$PROJECT_DIR$/../warcraft-sso-web/target</output-path>
+    <root id="archive" name="warcraft-sso-web.war">
+      <element id="artifact" artifact-name="warcraft-sso-web:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="warcraft-first:war">
+    <output-path>$PROJECT_DIR$/../warcraft-first/target</output-path>
+    <root id="archive" name="warcraft-first.war">
+      <element id="artifact" artifact-name="warcraft-first:war exploded" />
+    </root>
+  </artifact>
+</component>

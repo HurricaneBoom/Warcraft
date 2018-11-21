@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="warcraft-boss" />
+        <module name="warcraft-buyer" />
+        <module name="warcraft-common" />
+        <module name="warcraft-deliverer" />
+        <module name="warcraft-first" />
+        <module name="warcraft-manager-dao" />
+        <module name="warcraft-manager-interface" />
+        <module name="warcraft-manager-pojo" />
+        <module name="warcraft-manager-service" />
+        <module name="warcraft-manager-web" />
+        <module name="warcraft-sso-interface" />
+        <module name="warcraft-sso-service" />
+        <module name="warcraft-sso-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="warcraft-boss" target="1.7" />
+      <module name="warcraft-buyer" target="1.7" />
+      <module name="warcraft-common" target="1.7" />
+      <module name="warcraft-deliverer" target="1.7" />
+      <module name="warcraft-first" target="1.7" />
+      <module name="warcraft-manage" target="1.7" />
+      <module name="warcraft-manager-dao" target="1.7" />
+      <module name="warcraft-manager-interface" target="1.7" />
+      <module name="warcraft-manager-pojo" target="1.7" />
+      <module name="warcraft-manager-service" target="1.7" />
+      <module name="warcraft-manager-web" target="1.7" />
+      <module name="warcraft-parent" target="1.7" />
+      <module name="warcraft-sso" target="1.7" />
+      <module name="warcraft-sso-interface" target="1.7" />
+      <module name="warcraft-sso-service" target="1.7" />
+      <module name="warcraft-sso-web" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

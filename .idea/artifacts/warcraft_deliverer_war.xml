@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="warcraft-deliverer:war">
+    <output-path>$PROJECT_DIR$/../warcraft-deliverer/target</output-path>
+    <root id="archive" name="warcraft-deliverer-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="warcraft-deliverer:war exploded" />
+    </root>
+  </artifact>
+</component>

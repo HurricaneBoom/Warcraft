@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Responsive Admin</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+     
+           
+          
+    <div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="assets/images/dianjia.jpg" width="70px" height="70px"/>
+                    </a>
+                </div>
+              
+                 <span class="logout-spn" >
+                  <a href="#" style="color:#fff;">LOGOUT</a>  
+
+                </span>
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                 
+
+
+                     <li> 
+                        <a href="doIndexUI.do" ><i class="fa fa-desktop "></i>首页 <span class="badge">Included</span></a>
+                    </li>
+                  
+                    <li >
+                        <a id="active-link"><i class="fa fa-table "></i>全部订单 </a>
+                    </li>
+                    <li >
+                        <a href="dodingdan.do"><i class="fa fa-table "></i>接受订单 </a>
+                    </li>
+                    <li >
+                        <a id="jieshou"><i class="fa fa-edit "></i>已接单  </a>
+                    </li>
+
+
+                    <li>
+                        <a id="cancling"><i class="fa fa-edit "></i>退订单ing </a>
+                    </li>
+                </ul>
+                            </div>
+
+        </nav>
+         <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>订单信息</h2>   
+                    </div>
+                </div>   
+                					<!-- /.box-header -->
+			<div class="box-body table-responsive no-padding">
+				<table class="table table-hover">
+					<thead id="thead">
+						<tr>													
+							<th>订单id</th>
+							<th>买家id</th>
+							<th>购物车id</th>
+							<th>店铺id</th>
+							<th>商家购物车id</th>
+							<th>下单时间</th>
+							<th>订单状态</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyId"></tbody>
+				</table>
+			</div>
+          
+
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    <script src="assets/js/stomp.js"></script>
+    <script type="text/javascript">
+ $(function(){
+		   doGetObjects();
+		     $("tbody").on("click",".btn-accepted",doValidById);
+		     $("tbody").on("click",".btn-cancel",doValidById);
+		      doLoadUI("active-link","doAllIndentall.do");
+	    	  doLoadUI("jieshou","doJieShouall.do");
+	    	  doLoadUI("cancling","doCancelingall.do");
+	    	 
+ });
+ function doLoadUI(id,url){
+	  $("#"+id).click(function(){
+    	   $("#page-inner").load(url,function(){
+    		  $("#page-inner").removeData();
+    	   });
+     });
+ }
+ 
+	//页面加载完成异步加载当前页数据
+	   function doGetObjects(){
+		   var url="selectIndent.do";
+		   /* var pageCurrent=$("#pageId").data("pageCurrent");
+		   if(!pageCurrent)pageCurrent=1;
+		   var params={"pageCurrent":pageCurrent}
+		   params.username=$("#searchNameId").val().trim(); */
+		   //console.log(params);
+		   $.getJSON(url,function(result){
+			   console.log(result);
+			   doHandleResponseResult(result);
+		   });
+	   }
+	 
+ 
+ function doHandleResponseResult(result){
+	   if(result.state==1){
+		  doSetTableBodyRows(result.data);
+		}else{
+		  alert(result.message);
+	   }
+ }
+ /* //取消
+ function doValidByIdCancel(){
+	   //params
+	   var indentId=$(this).parents("td").parents("tr").data("indentId");
+	   var params={"indentId":indentId};
+	   //url
+	   var url="updateIndentCancel.do";
+	   //ajax request
+   var btn=$(this);//获取点击的button对象
+	   $.post(url,params,function(result){
+	   if(result.state==1){
+		   alert(result.message);
+		 doGetObjects();
+		   //doGetObjects();//重新查询刷新
+		   //优化方式实现(局部刷新:修改button显示,修改td内容显示)
+	   }else{
+		   alert(result.message);
+	   }
+   })    
+}    */
+ 
+ //禁用和启用操作
+ function doValidById(){
+	   //params
+	   var indentId=$(this).parents("td").parents("tr").data("indentId");
+	   var params={"indentId":indentId};
+	   //url
+	   var url="updateIndentAccepted.do";
+	   //ajax request
+     var btn=$(this);//获取点击的button对象
+	   $.post(url,params,function(result){
+  	   if(result.state==1){
+  		   alert(result.message);
+  		 doGetObjects();
+  		   //doGetObjects();//重新查询刷新
+  		   //优化方式实现(局部刷新:修改button显示,修改td内容显示)
+  	   }else{
+  		   alert(result.message);
+  	   }
+     })    
+ }   
+ function doEditRow(obj,indentStatus){
+	   console.log("obj",obj);
+	   console.log("indentStatus",indentStatus);
+	   //1.修改按钮上的内容
+	   $(obj).html(indentStatus?"payed":"accept");
+	   //2.修改tr中第5个td中的内容(查询API文档)
+	   var tr=$(obj).parents("tr");
+	   tr.find("td:eq(10)").text(indentStatus?"payed":"accept");
+	   //3.获取当前行tr对象，然后重新绑定新的值
+	   var rowData=tr.data("rowData")
+	   rowData.valid=indentStatus?"payed":"accept";
+	   tr.data("rowData",rowData);
+ }
+ //通过服务端返回的数据初始化页面
+ function doSetTableBodyRows(data){
+	  //1.获取tbody对象，并清空内容
+	  var tBody=$("#tbodyId");
+	  tBody.empty();
+	  //2.迭代data内容将数据追加到tbody中
+	  for(var i in data){
+		  var tr=$("<tr></tr>");
+		  tr.data("indentId",data[i].indentId);
+		  var tds=doCreateTds(data[i]);
+		  tr.append(tds);
+		  tBody.append(tr);
+	  }
+ }
+ function doCreateTds(row){
+	   console.log(row);
+	   var tds="<td>"+row.indentId+"</td>"+
+	     "<td>"+row.buyerId+"</td>"+
+	     "<td>"+row.shoppingId+"</td>"+
+	     "<td>"+row.storeId+"</td>"+
+	     "<td>"+row.trolleyId+"</td>"+
+	     "<td>"+row.indentSingletime+"</td>"+
+	     "<td><button type='button' class='btn btn-default btn-accepted'>accepted</button></td>"+
+	     "<td><button type='button' class='btn btn-default btn-cancel'>cancel</button></td>";
+     return tds;
+ }
+</script>
+   <script type="text/javascript">
+    	var url = "ws://localhost:61614/stomp"; 
+    	var login = "admin";
+    	var passcode = "admin";
+    	//监听的队列
+    	//需要和发送者的发送的队列名称一致否则无法接受到数据
+    	destination = "indent-payed";
+    	client = Stomp.client(url);
+    	var onconnect = function(frame) {
+    	  client.subscribe(destination, function(message) {
+				   doGetObjects();     
+    	     console.log(message.body);
+    	         alert(message.body);
+    	  });
+    	};
+    	client.connect(login, passcode, onconnect);
+    </script>
+</body>
+</html>

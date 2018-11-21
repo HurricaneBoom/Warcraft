@@ -1,0 +1,125 @@
+﻿<div class="box box-info">
+	<div class="box-header with-border">
+		<h3 class="box-title">修改菜品</h3>
+	</div>
+	<!-- /.box-header -->
+	<!-- form start -->
+	<form class="form-horizontal">
+		<div class="box-body">
+			<div class="form-group">
+				<label for="storeId" class="col-sm-2 control-label">饭店id</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="storeId">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="dietNameId" class="col-sm-2 control-label">菜品名称</label>
+
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="dietName">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="deptId" class="col-sm-2 control-label">菜品价格</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control load-sys-dept" id="dietPrice">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="emailId" class="col-sm-2 control-label">菜品描述</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="dietDescription">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="phoneId" class="col-sm-2 control-label">菜品图片</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="dietPicture">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="rolesId" class="col-sm-2 control-label">菜品状态</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="dietStatus">
+				</div>
+			</div>
+		</div>
+		<!-- /.box-body -->
+		<div class="box-footer">
+
+			<button type="button" class="btn btn-info pull-right btn-save">Save</button>
+		</div>
+		<!-- /.box-footer -->
+	</form>
+	<script src="assets/js/jquery-1.10.2.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script src="assets/js/bootstrap.min.js"></script>
+	<!-- CUSTOM SCRIPTS -->
+	<script src="assets/js/custom.js"></script>
+	<script src="assets/js/jquery.cookie.js"></script>
+	<script type="text/javascript">
+	
+	$(function(){
+    	doGetObjects();//ajax
+      $(".box-footer")
+   	 .on("click",".btn-save",doSave);
+      doGetObjects();
+    })
+    function doSave(){//insert or update
+    	//1.获取表单数据
+    	var data=doGetEditFormData();
+    	console.log(data);
+    	//2.异步提交表单数据
+    	 var url="doUpdateDietOK.do";
+    		  $.post(url,data,function(result){
+    		 alert(result.message);
+    	 })
+    }
+   
+    function doGetEditFormData(){
+  	  var params={
+  		dietId:$.cookie('DIETId'),
+  	    storeId:$("#storeId").val(),
+  	  	dietName:$("#dietName").val(),
+  	  	dietPrice:$("#dietPrice").val(),
+  		dietDescription:$("#dietDescription").val(),
+  		dietPicture:$("#dietPicture").val(),
+  		dietStatus:$("#dietStatus").val()
+  	  }
+  	  return params;
+    }
+    
+    function doGetObjects(){
+    	
+    	 //debugger
+    	 //1.定义请求的url
+    	 var logUrl="doFindDietInfoById.do"
+    	 //2.定义请求的参数
+    	 //var pageCurrent=$("#pageId").data("pageCurrent");
+    	 //if(!pageCurrent)pageCurrent=1;
+    	 //var params="pageCurrent="+pageCurrent;
+    	 //var params={"pageCurrent":pageCurrent};
+    	 //点击查询按钮时,获取用户名,基于用户名执行查询操作.
+    	 //var username=$("#searchNameId").val();
+    	 var DIETId=$.cookie('DIETId');
+    	 console.log(DIETId);
+    	 var params="dietId="+DIETId;
+    	 //if(username)params.username=username;
+    	 //3.发送异步请求
+    	 $.ajax({//底层封装了XMLHttpRequest
+    		 url:logUrl,
+    		 data:params,
+    		 dataType:"json",
+    		 success:function(result){
+    		    $("#storeId").val(result.data.storeId);
+    		    $("#dietName").val(result.data.dietName);
+    		    $("#dietPrice").val(result.data.dietPrice);
+    		    $("#dietDescription").val(result.data.dietDescription);
+    		    $("#dietPicture").val(result.data.dietPicture);
+    		    $("#dietStatus").val(result.data.dietStatus);
+    		 }
+    	 })
+    }
+</script>

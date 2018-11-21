@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d8ead6b5-57b4-406e-999c-d9df4e03ad98" name="Default" comment="warcraft-buyer">
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.classpath" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.project" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.settings/.jsdtscope" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.settings/org.eclipse.m2e.core.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.settings/org.eclipse.wst.common.component" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.settings/org.eclipse.wst.common.project.facet.core.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.settings/org.eclipse.wst.jsdt.ui.superType.container" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.settings/org.eclipse.wst.jsdt.ui.superType.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/.settings/org.eclipse.wst.validation.prefs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/common/vo/IndentPageSurface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/common/vo/JsonResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/commonexception/ServiceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/controller/AddressController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/controller/BossInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/controller/BuyerInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/controller/IndentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/controller/MenuInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/controller/SkipController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/controller/StoreInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/controller/TrolleyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/AbolishMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/AddressMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/BossInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/BuyerInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/DelivererInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/DelivererOrderMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/IndentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/MenuInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/ShoppingCartMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/StoreInfoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/dao/TrolleyMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/Abolish.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/AbolishExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/AddressExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/BossInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/BossInfoExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/BuyerInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/BuyerInfoExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/DelivererInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/DelivererInfoExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/DelivererOrder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/DelivererOrderExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/Indent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/IndentExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/MenuInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/MenuInfoExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/ShoppingCart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/ShoppingCartExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/StoreInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/StoreInfoExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/Trolley.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/pojo/TrolleyExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/AddressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/BossInfoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/BuyerInfoSerivce.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/IndentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/MenuInfoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/StoreInfoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/TrolleyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/impl/AddressServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/impl/BossInfoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/impl/BuyerInfoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/impl/IndentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/impl/MenuInfoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/impl/StoreInfoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/java/com/warcraft/service/impl/TrolleyServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/configs.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/AbolishMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/AddressMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/BossInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/BuyerInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/DelivererInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/DelivererOrderMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/IndentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/MenuInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/ShoppingCartMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/StoreInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/mapper/TrolleyMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/spring-activemq.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/spring-configs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/spring-mvc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/resources/spring-mybatis.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/WEB-INF/pages/address.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/WEB-INF/pages/contact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/WEB-INF/pages/indent.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/WEB-INF/pages/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/WEB-INF/pages/menu.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/WEB-INF/pages/menu_buyer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/WEB-INF/pages/menu_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/WEB-INF/pages/services.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/animate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/bootstrap-datepicker.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/bootstrap-datetimepicker.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/flexslider.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/icomoon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/magnific-popup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/owl.theme.default.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/style.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/css/themify-icons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/bootstrap/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/bootstrap/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/bootstrap/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/bootstrap/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/bootstrap/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/icomoon/icomoon.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/icomoon/icomoon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/icomoon/icomoon.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/icomoon/icomoon.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/themify-icons/themify.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/themify-icons/themify.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/themify-icons/themify.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/fonts/themify-icons/themify.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/images/img_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/images/img_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/images/img_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/images/img_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/images/img_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/images/img_6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/images/img_bg_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/images/img_bg_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/images/loader.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/bootstrap-datepicker.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/bootstrap-datetimepicker.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/google_map.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/jquery-2.1.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/jquery.countTo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/jquery.easing.1.3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/jquery.magnific-popup.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/jquery.stellar.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/jquery.waypoints.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/magnific-popup-options.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/map.jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/modernizr-2.6.2.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/moment.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/owl.carousel.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/respond.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/stomp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/js/tree.table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/_bootstrap-compass.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/_bootstrap-mincer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/_bootstrap-sprockets.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_alerts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_badges.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_breadcrumbs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_button-groups.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_carousel.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_close.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_code.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_component-animations.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_dropdowns.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_glyphicons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_grid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_input-groups.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_jumbotron.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_labels.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_list-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_media.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_modals.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_navbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_navs.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_normalize.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_pager.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_pagination.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_panels.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_popovers.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_print.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_progress-bars.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_responsive-embed.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_responsive-utilities.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_scaffolding.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_tables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_theme.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_thumbnails.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_tooltip.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_type.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_utilities.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/_wells.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_alerts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_background-variant.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_border-radius.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_buttons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_center-block.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_clearfix.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_gradients.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_grid-framework.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_grid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_hide-text.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_image.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_labels.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_list-group.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_nav-divider.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_nav-vertical-align.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_opacity.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_pagination.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_panels.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_progress-bar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_reset-filter.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_reset-text.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_resize.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_responsive-visibility.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_size.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_tab-focus.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_table-row.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_text-emphasis.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_text-overflow.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/bootstrap/mixins/_vendor-prefixes.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../warcraft-buyer/warcraft-buyer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-first/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-manage/warcraft-manager-pojo/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-manage/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-manager-web/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-common/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-buyer/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-manage/warcraft-manager-service/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-manage/warcraft-manager-interface/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-manage/warcraft-manager-dao/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-parent/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-deliverer/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-sso/warcraft-sso-service/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-sso/warcraft-sso-interface/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-sso/target/" />
+    <ignored path="$PROJECT_DIR$/../warcraft-sso-web/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../warcraft-buyer" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\software\repository" />
+        <option name="mavenHome" value="D:/software/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="D:\software\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="warcraft-boss" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="73" />
+    <option name="y" value="19" />
+    <option name="width" value="1773" />
+    <option name="height" value="974" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="warcraft-boss" type="b2602c69:ProjectViewProjectNode" />
+              <item name="warcraft-buyer" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../warcraft-buyer" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d8ead6b5-57b4-406e-999c-d9df4e03ad98" name="Default" comment="" />
+      <created>1542787188726</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1542787188726</updated>
+      <workItem from="1542787190658" duration="2646000" />
+    </task>
+    <task id="LOCAL-00001" summary="warcraft-boss">
+      <created>1542788768014</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1542788768014</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2646000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <layout>
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" weight="0.32995737" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info anchor="right" id="Database" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="bottom" id="Java Enterprise" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Spring" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Web" side_tool="true" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="github test" />
+    <MESSAGE value="warcraft-boss" />
+    <MESSAGE value="warcraft-buyer" />
+    <option name="LAST_COMMIT_MESSAGE" value="warcraft-buyer" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../warcraft-buyer/src/main/webapp/sass/_bootstrap-compass.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

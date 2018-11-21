@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Responsive Admin</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+     
+           
+          
+    <div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="assets/images/dianjia.jpg" width="70px" height="70px"/>
+                    </a>
+                </div>
+              
+                 <span class="logout-spn" >
+                  <a href="#" style="color:#fff;">Warcraft-boss</a>  
+
+                </span>
+            </div>
+        </div>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                 
+
+ <li >
+                        <a href="doIndexUI.do" ><i class="fa fa-desktop "></i>首页<span class="badge">Included</span></a>
+                    </li>
+                   
+
+                    <li>
+                        <a href="dodingdan.do"><i class="fa fa-table "></i>订单  <span class="badge">Included</span></a>
+                    </li>
+                    <li class="active-link">
+                        <a href="#"><i class="fa fa-edit "></i>商品  <span class="badge">Included</span></a>
+                    </li>
+                    <li>
+                        <a href="dofindBossId.do"><i class="fa fa-edit "></i>门店 </a>
+                    </li>
+                     <li>
+                        <a href="bangzhu.html"><i class="fa fa-edit "></i>帮助 </a>
+                    </li>
+                </ul>
+                            </div>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>门店信息 </h2>   
+                    </div>
+                </div>              
+                 <!-- /. ROW  -->
+                 		 <div class="input-group-btn">
+							<button type="button" class="btn btn-default btn-update">修改</button>
+						</div>
+					<!-- /.box-header -->
+			<div class="box-body table-responsive no-padding">
+				<table class="table table-hover">
+					<thead id="thead">
+						<tr>													
+							<th>店主id</th>
+							<th>店铺id</th>
+							<th>店主账号</th>
+							<th>店主密码</th>
+							<th>店主姓名</th>
+							<th>店主身份证</th>
+							<th>许可证名称</th>
+							<th>许可证注册号码</th>
+							<th>许可证注册地址</th>
+							<th>许可证编号</th>
+							<th>许可证到期日期</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyId"></tbody>
+				</table>
+			</div>
+                  <hr />              
+                 <!-- /. ROW  -->           
+    </div>
+             <!-- /. PAGE INNER  -->
+            </div>
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+    <div class="footer">           
+        </div>
+        </div>
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+ 
+ <script type="text/javascript">
+ $(function(){
+		   doGetObjects();
+ });
+ 
+	//页面加载完成异步加载当前页数据
+	   function doGetObjects(){
+		   var url="findBossByBossId.do?bossId=1";
+		   /* var pageCurrent=$("#pageId").data("pageCurrent");
+		   if(!pageCurrent)pageCurrent=1;
+		   var params={"pageCurrent":pageCurrent}
+		   params.username=$("#searchNameId").val().trim(); */
+		   //console.log(params);
+		   $.getJSON(url,function(result){
+			   console.log(result);
+			   doHandleResponseResult(result);
+		   });
+	   }
+	 
+ function doLoadEditUI(){
+	   //1.判定点击的对象
+	   var title;
+	   if($(this).hasClass("btn-update")){
+		   title="修改用户";
+/* 		   var id=doGetCheckedId();
+		   console.log("id="+id)
+		   if(!id){
+			  alert("请先选择");
+			  return;
+		   } */
+		   //基于id进行查询并加载编辑页面
+		   //doFindObjectById(id,title);
+	   }
+ }
+ function doFindObjectById(id,title){
+	   //1.params
+	   var params={"id":id};
+	   //2.url
+	   var url="user/doFindObjectById.do";
+	   //3.ajax request
+	   $.getJSON(url,params,function(result){//JsonResult
+		   if(result.state==1){
+			  $("#mainContentId").data("rowData",result.data); 
+	          doLoadPage(title);
+		   }else{
+			  alert(result.message);
+		   }
+	   });
+ }
+
+ function doLoadPage(title){
+	   var url="user/doUserEditUI.do"
+	   $("#mainContentId").load(url,function(){
+		   $(".box-title").html(title);
+		    var rowData=$("#mainContentId").data("rowData");
+		   if(rowData)//假如是修改则隐藏密码框
+		   $("#pwdDivId").css("display","none"); //none表示隐藏 
+		   
+	   }) 
+ }
+
+ 
+ function doHandleResponseResult(result){
+	   if(result.state==1){
+		  doSetTableBodyRows(result.data);
+		}else{
+		  alert(result.message);
+	   }
+ }
+ //通过服务端返回的数据初始化页面
+ function doSetTableBodyRows(data){
+	  //1.获取tbody对象，并清空内容
+	  var tBody=$("#tbodyId");
+	  tBody.empty();
+	  //2.迭代data内容将数据追加到tbody中
+	  for(var i in data){
+		  var tr=$("<tr></tr>");
+		  tr.data("rowData",data[i]);
+		  var tds=doCreateTds(data[i]);
+		  tr.append(tds);
+		  tBody.append(tr);
+	  }
+ }
+ function doCreateTds(row){//row=SysUserDeptResult
+	   console.log(row);
+	   var tds="<td>"+row.bossId+"</td>"+
+	     "<td>"+row.storeId+"</td>"+
+	     "<td>"+row.bossUsername+"</td>"+
+	     "<td>"+row.bossPassword+"</td>"+
+	     "<td>"+row.bossName+"</td>"+
+	     "<td>"+row.bossIdcard+"</td>"+
+	     "<td>"+row.bossLicensename+"</td>"+
+	     "<td>"+row.bossLicenseregistnumber+"</td>"+
+	     "<td>"+row.bossLicenseregistaddr+"</td>"+
+	     "<td>"+row.bossLicenseid+"</td>"+	   
+	     "<td>"+new Date(row.bossLicensetime).toLocaleString()+"</td>"; 
+     return tds;
+ }
+</script>
+    
+   
+</body>
+</html>

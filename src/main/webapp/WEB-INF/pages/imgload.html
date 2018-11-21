@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>异步上传文件</title>
+<script type="text/javascript" src="assets/js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="assets/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="assets/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+        $(function() {
+            $(".button").click(function() {
+                if ($("#file").val().length > 0) {
+                    ajaxFileUpload();
+                   // ajaxFileUpload2();
+                } else {
+                    alert("请选择图片");
+                }
+            });
+            doLoadUI("but","doAddDiet.do");
+        });
+        function doLoadUI(id,url){
+      	  $("."+id).click(function(){
+           	   $("#page-inner").load(url);
+            });
+        }
+        function ajaxFileUpload() {
+            $.ajaxFileUpload({
+                    //跟具updateP得到不同的上传文本的ID
+                    url:'/file/ajaxTest.do',             //需要链接到服务器地址
+                    secureuri:false,
+                    fileElementId:'file',                         //文件选择框的id属性（必须）
+                    dataType: 'json',
+                    success: function (data, status){
+                    	console.log(data);
+                        var imgUrl = "http://127.0.0.1:8091/"+data.fileName;
+                        $.cookie("imgUrl",imgUrl);
+                        console.log($.cookie("imgUrl"));
+                        $("#img").attr("src",imgUrl);
+                        console.log(status);
+                        alert('上传成功');
+                    },
+                    error: function (data, status){
+                    	alert('上传失败');
+                    }
+                })
+            return false;
+        }
+       
+    </script>
+</head>
+<body>
+	<form action="/file/ajaxTest" method="post"
+		enctype="multipart/form-data">
+		<div>
+			<input type="file" id="file" name="xinghua" />
+		</div>
+		<div>
+			<input type="button" class="button" value="上传" />
+			<input type="button" class="but" value="返回" />
+			
+		</div>
+		<div>
+			<img style="width: 480px; height: 480px" id="img" alt="预览图片" src="" />
+		</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.warcraft.dao.MenuInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.warcraft.pojo.MenuInfo" >
+    <id column="diet_id" property="dietId" jdbcType="BIGINT" />
+    <result column="store_id" property="storeId" jdbcType="BIGINT" />
+    <result column="diet_name" property="dietName" jdbcType="VARCHAR" />
+    <result column="diet_price" property="dietPrice" jdbcType="DECIMAL" />
+    <result column="diet_description" property="dietDescription" jdbcType="VARCHAR" />
+    <result column="diet_picture" property="dietPicture" jdbcType="VARCHAR" />
+    <result column="diet_status" property="dietStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    diet_id, store_id, diet_name, diet_price, diet_description, diet_picture, diet_status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.warcraft.pojo.MenuInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from menu_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from menu_info
+    where diet_id = #{dietId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from menu_info
+    where diet_id = #{dietId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.warcraft.pojo.MenuInfoExample" >
+    delete from menu_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.warcraft.pojo.MenuInfo" >
+    insert into menu_info (diet_id, store_id, diet_name, 
+      diet_price, diet_description, diet_picture, 
+      diet_status)
+    values (#{dietId,jdbcType=BIGINT}, #{storeId,jdbcType=BIGINT}, #{dietName,jdbcType=VARCHAR}, 
+      #{dietPrice,jdbcType=DECIMAL}, #{dietDescription,jdbcType=VARCHAR}, #{dietPicture,jdbcType=VARCHAR}, 
+      #{dietStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.warcraft.pojo.MenuInfo" >
+    insert into menu_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dietId != null" >
+        diet_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="dietName != null" >
+        diet_name,
+      </if>
+      <if test="dietPrice != null" >
+        diet_price,
+      </if>
+      <if test="dietDescription != null" >
+        diet_description,
+      </if>
+      <if test="dietPicture != null" >
+        diet_picture,
+      </if>
+      <if test="dietStatus != null" >
+        diet_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dietId != null" >
+        #{dietId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="dietName != null" >
+        #{dietName,jdbcType=VARCHAR},
+      </if>
+      <if test="dietPrice != null" >
+        #{dietPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dietDescription != null" >
+        #{dietDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="dietPicture != null" >
+        #{dietPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="dietStatus != null" >
+        #{dietStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.warcraft.pojo.MenuInfoExample" resultType="java.lang.Integer" >
+    select count(*) from menu_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update menu_info
+    <set >
+      <if test="record.dietId != null" >
+        diet_id = #{record.dietId,jdbcType=BIGINT},
+      </if>
+      <if test="record.storeId != null" >
+        store_id = #{record.storeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.dietName != null" >
+        diet_name = #{record.dietName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dietPrice != null" >
+        diet_price = #{record.dietPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dietDescription != null" >
+        diet_description = #{record.dietDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dietPicture != null" >
+        diet_picture = #{record.dietPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dietStatus != null" >
+        diet_status = #{record.dietStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update menu_info
+    set diet_id = #{record.dietId,jdbcType=BIGINT},
+      store_id = #{record.storeId,jdbcType=BIGINT},
+      diet_name = #{record.dietName,jdbcType=VARCHAR},
+      diet_price = #{record.dietPrice,jdbcType=DECIMAL},
+      diet_description = #{record.dietDescription,jdbcType=VARCHAR},
+      diet_picture = #{record.dietPicture,jdbcType=VARCHAR},
+      diet_status = #{record.dietStatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warcraft.pojo.MenuInfo" >
+    update menu_info
+    <set >
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="dietName != null" >
+        diet_name = #{dietName,jdbcType=VARCHAR},
+      </if>
+      <if test="dietPrice != null" >
+        diet_price = #{dietPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dietDescription != null" >
+        diet_description = #{dietDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="dietPicture != null" >
+        diet_picture = #{dietPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="dietStatus != null" >
+        diet_status = #{dietStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where diet_id = #{dietId,jdbcType=BIGINT}
+  </update>
+  <update id="updateDiet">
+    update menu_info
+    set store_id = #{storeId,jdbcType=BIGINT},
+      diet_name = #{dietName,jdbcType=VARCHAR},
+      diet_price = #{dietPrice,jdbcType=DECIMAL},
+      diet_description = #{dietDescription,jdbcType=VARCHAR},
+      diet_picture = #{dietPicture,jdbcType=VARCHAR},
+      diet_status = #{dietStatus,jdbcType=VARCHAR}
+      where diet_id= #{dietId}
+  </update>
+  <select id="selectAllDiet" resultMap="BaseResultMap">
+  	select * from menu_info
+  </select>
+  <insert id="insertDiet" parameterType="com.warcraft.pojo.MenuInfo"
+		useGeneratedKeys="true" keyProperty="dietId">
+  	insert into menu_info (store_id,diet_name,diet_price,diet_description,diet_picture,diet_status)
+  	values(#{storeId},#{dietName},#{dietPrice},#{dietDescription},#{dietPicture},#{dietStatus})
+  </insert>
+  <select id="findDietInfoById" resultMap="BaseResultMap">
+  		select * from menu_info where diet_id=#{dietId}
+  </select>
+  <delete id="doDeleteDiet">
+  		delete from menu_info where diet_id=#{dietId}
+  </delete>
+</mapper>

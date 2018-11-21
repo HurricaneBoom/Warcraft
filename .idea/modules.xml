@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/warcraft-boss.iml" filepath="$PROJECT_DIR$/warcraft-boss.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-buyer/warcraft-buyer.iml" filepath="$PROJECT_DIR$/../warcraft-buyer/warcraft-buyer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-common/warcraft-common.iml" filepath="$PROJECT_DIR$/../warcraft-common/warcraft-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-deliverer/warcraft-deliverer.iml" filepath="$PROJECT_DIR$/../warcraft-deliverer/warcraft-deliverer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-first/warcraft-first.iml" filepath="$PROJECT_DIR$/../warcraft-first/warcraft-first.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-manage/warcraft-manage.iml" filepath="$PROJECT_DIR$/../warcraft-manage/warcraft-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-manage/warcraft-manager-dao/warcraft-manager-dao.iml" filepath="$PROJECT_DIR$/../warcraft-manage/warcraft-manager-dao/warcraft-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-manage/warcraft-manager-interface/warcraft-manager-interface.iml" filepath="$PROJECT_DIR$/../warcraft-manage/warcraft-manager-interface/warcraft-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-manage/warcraft-manager-pojo/warcraft-manager-pojo.iml" filepath="$PROJECT_DIR$/../warcraft-manage/warcraft-manager-pojo/warcraft-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-manage/warcraft-manager-service/warcraft-manager-service.iml" filepath="$PROJECT_DIR$/../warcraft-manage/warcraft-manager-service/warcraft-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-manager-web/warcraft-manager-web.iml" filepath="$PROJECT_DIR$/../warcraft-manager-web/warcraft-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-parent/warcraft-parent.iml" filepath="$PROJECT_DIR$/../warcraft-parent/warcraft-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-sso/warcraft-sso.iml" filepath="$PROJECT_DIR$/../warcraft-sso/warcraft-sso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-sso/warcraft-sso-interface/warcraft-sso-interface.iml" filepath="$PROJECT_DIR$/../warcraft-sso/warcraft-sso-interface/warcraft-sso-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-sso/warcraft-sso-service/warcraft-sso-service.iml" filepath="$PROJECT_DIR$/../warcraft-sso/warcraft-sso-service/warcraft-sso-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../warcraft-sso-web/warcraft-sso-web.iml" filepath="$PROJECT_DIR$/../warcraft-sso-web/warcraft-sso-web.iml" />
+    </modules>
+  </component>
+</project>
