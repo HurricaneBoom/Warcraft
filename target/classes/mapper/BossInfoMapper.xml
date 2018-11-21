@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.warcraft.dao.BossInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.warcraft.pojo.BossInfo" >
+    <id column="boss_id" property="bossId" jdbcType="BIGINT" />
+    <result column="store_id" property="storeId" jdbcType="BIGINT" />
+    <result column="boss_username" property="bossUsername" jdbcType="VARCHAR" />
+    <result column="boss_password" property="bossPassword" jdbcType="VARCHAR" />
+    <result column="boss_name" property="bossName" jdbcType="VARCHAR" />
+    <result column="boss_idcard" property="bossIdcard" jdbcType="VARCHAR" />
+    <result column="boss_licensename" property="bossLicensename" jdbcType="VARCHAR" />
+    <result column="boss_licenseregistnumber" property="bossLicenseregistnumber" jdbcType="VARCHAR" />
+    <result column="boss_licenseregistaddr" property="bossLicenseregistaddr" jdbcType="VARCHAR" />
+    <result column="boss_licenseid" property="bossLicenseid" jdbcType="VARCHAR" />
+    <result column="boss_licensetime" property="bossLicensetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    boss_id, store_id, boss_username, boss_password, boss_name, boss_idcard, boss_licensename, 
+    boss_licenseregistnumber, boss_licenseregistaddr, boss_licenseid, boss_licensetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.warcraft.pojo.BossInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from boss_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from boss_info
+    where boss_id = #{bossId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from boss_info
+    where boss_id = #{bossId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.warcraft.pojo.BossInfoExample" >
+    delete from boss_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.warcraft.pojo.BossInfo" >
+    insert into boss_info (boss_id, store_id, boss_username, 
+      boss_password, boss_name, boss_idcard, 
+      boss_licensename, boss_licenseregistnumber, 
+      boss_licenseregistaddr, boss_licenseid, boss_licensetime
+      )
+    values (#{bossId,jdbcType=BIGINT}, #{storeId,jdbcType=BIGINT}, #{bossUsername,jdbcType=VARCHAR}, 
+      #{bossPassword,jdbcType=VARCHAR}, #{bossName,jdbcType=VARCHAR}, #{bossIdcard,jdbcType=VARCHAR}, 
+      #{bossLicensename,jdbcType=VARCHAR}, #{bossLicenseregistnumber,jdbcType=VARCHAR}, 
+      #{bossLicenseregistaddr,jdbcType=VARCHAR}, #{bossLicenseid,jdbcType=VARCHAR}, #{bossLicensetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.warcraft.pojo.BossInfo" >
+    insert into boss_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bossId != null" >
+        boss_id,
+      </if>
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="bossUsername != null" >
+        boss_username,
+      </if>
+      <if test="bossPassword != null" >
+        boss_password,
+      </if>
+      <if test="bossName != null" >
+        boss_name,
+      </if>
+      <if test="bossIdcard != null" >
+        boss_idcard,
+      </if>
+      <if test="bossLicensename != null" >
+        boss_licensename,
+      </if>
+      <if test="bossLicenseregistnumber != null" >
+        boss_licenseregistnumber,
+      </if>
+      <if test="bossLicenseregistaddr != null" >
+        boss_licenseregistaddr,
+      </if>
+      <if test="bossLicenseid != null" >
+        boss_licenseid,
+      </if>
+      <if test="bossLicensetime != null" >
+        boss_licensetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bossId != null" >
+        #{bossId,jdbcType=BIGINT},
+      </if>
+      <if test="storeId != null" >
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="bossUsername != null" >
+        #{bossUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="bossPassword != null" >
+        #{bossPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="bossName != null" >
+        #{bossName,jdbcType=VARCHAR},
+      </if>
+      <if test="bossIdcard != null" >
+        #{bossIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="bossLicensename != null" >
+        #{bossLicensename,jdbcType=VARCHAR},
+      </if>
+      <if test="bossLicenseregistnumber != null" >
+        #{bossLicenseregistnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bossLicenseregistaddr != null" >
+        #{bossLicenseregistaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="bossLicenseid != null" >
+        #{bossLicenseid,jdbcType=VARCHAR},
+      </if>
+      <if test="bossLicensetime != null" >
+        #{bossLicensetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.warcraft.pojo.BossInfoExample" resultType="java.lang.Integer" >
+    select count(*) from boss_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update boss_info
+    <set >
+      <if test="record.bossId != null" >
+        boss_id = #{record.bossId,jdbcType=BIGINT},
+      </if>
+      <if test="record.storeId != null" >
+        store_id = #{record.storeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.bossUsername != null" >
+        boss_username = #{record.bossUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bossPassword != null" >
+        boss_password = #{record.bossPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bossName != null" >
+        boss_name = #{record.bossName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bossIdcard != null" >
+        boss_idcard = #{record.bossIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bossLicensename != null" >
+        boss_licensename = #{record.bossLicensename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bossLicenseregistnumber != null" >
+        boss_licenseregistnumber = #{record.bossLicenseregistnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bossLicenseregistaddr != null" >
+        boss_licenseregistaddr = #{record.bossLicenseregistaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bossLicenseid != null" >
+        boss_licenseid = #{record.bossLicenseid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bossLicensetime != null" >
+        boss_licensetime = #{record.bossLicensetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update boss_info
+    set boss_id = #{record.bossId,jdbcType=BIGINT},
+      store_id = #{record.storeId,jdbcType=BIGINT},
+      boss_username = #{record.bossUsername,jdbcType=VARCHAR},
+      boss_password = #{record.bossPassword,jdbcType=VARCHAR},
+      boss_name = #{record.bossName,jdbcType=VARCHAR},
+      boss_idcard = #{record.bossIdcard,jdbcType=VARCHAR},
+      boss_licensename = #{record.bossLicensename,jdbcType=VARCHAR},
+      boss_licenseregistnumber = #{record.bossLicenseregistnumber,jdbcType=VARCHAR},
+      boss_licenseregistaddr = #{record.bossLicenseregistaddr,jdbcType=VARCHAR},
+      boss_licenseid = #{record.bossLicenseid,jdbcType=VARCHAR},
+      boss_licensetime = #{record.bossLicensetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warcraft.pojo.BossInfo" >
+    update boss_info
+    <set >
+      <if test="storeId != null" >
+        store_id = #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="bossUsername != null" >
+        boss_username = #{bossUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="bossPassword != null" >
+        boss_password = #{bossPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="bossName != null" >
+        boss_name = #{bossName,jdbcType=VARCHAR},
+      </if>
+      <if test="bossIdcard != null" >
+        boss_idcard = #{bossIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="bossLicensename != null" >
+        boss_licensename = #{bossLicensename,jdbcType=VARCHAR},
+      </if>
+      <if test="bossLicenseregistnumber != null" >
+        boss_licenseregistnumber = #{bossLicenseregistnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bossLicenseregistaddr != null" >
+        boss_licenseregistaddr = #{bossLicenseregistaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="bossLicenseid != null" >
+        boss_licenseid = #{bossLicenseid,jdbcType=VARCHAR},
+      </if>
+      <if test="bossLicensetime != null" >
+        boss_licensetime = #{bossLicensetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where boss_id = #{bossId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.warcraft.pojo.BossInfo" >
+    update boss_info
+    set store_id = #{storeId,jdbcType=BIGINT},
+      boss_username = #{bossUsername,jdbcType=VARCHAR},
+      boss_password = #{bossPassword,jdbcType=VARCHAR},
+      boss_name = #{bossName,jdbcType=VARCHAR},
+      boss_idcard = #{bossIdcard,jdbcType=VARCHAR},
+      boss_licensename = #{bossLicensename,jdbcType=VARCHAR},
+      boss_licenseregistnumber = #{bossLicenseregistnumber,jdbcType=VARCHAR},
+      boss_licenseregistaddr = #{bossLicenseregistaddr,jdbcType=VARCHAR},
+      boss_licenseid = #{bossLicenseid,jdbcType=VARCHAR},
+      boss_licensetime = #{bossLicensetime,jdbcType=TIMESTAMP}
+    where boss_id = #{bossId,jdbcType=BIGINT}
+  </update>
+  
+  
+</mapper>
