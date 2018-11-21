@@ -1,0 +1,4 @@
+com\warcraft\jedis\JedisClientCluster.class
+com\warcraft\jedis\JedisClientPool.class
+com\warcraft\jedis\JedisClient.class
+com\warcraft\sso\service\impl\ManagerInfoServiceImpl.class
