@@ -1,0 +1,107 @@
+<div class="row">
+	<div class="col-xs-12">
+		
+		
+			<!-- /.box-header -->
+			<div class="box-body table-responsive no-padding">
+				<form>
+				  <table class="table table-hover">
+					<thead>
+						<tr>
+							<th>订单id</th>	
+							<th>配送员id</th>
+							<th>下单时间</th>
+							<th>送达时间</th>
+							<th>接单日期</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyId">
+					</tbody>
+				  </table>
+				</form>
+			</div>
+			<!-- /.box-body -->
+			<div id="pageId" class="box-footer clearfix">
+            </div>
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	doGetObjects();
+
+});
+	
+function doGetObjects(){
+	// debugger
+	 console.log("doGetObjects");
+	 //1.定义请求的url
+	 var logUrl="selectComplete.do"
+	 //var params="pageCurrent="+pageCurrent;
+	 //点击查询按钮时,获取用户名,基于用户名执行查询操作.
+	 //3.发送异步请求
+	 $.ajax({//底层封装了XMLHttpRequest
+		 url:logUrl,
+		 dataType:"json",
+		 success:function(result){
+		   //debugger
+		   doHandleResponseResult(result);
+		 }
+	 });//ajax()为jquery中定义异步请求函数
+	 //如上ajax方法的简写方式
+	/* $.getJSON(logUrl,params,function(result){
+		 doHandleResponseResult(result);
+	 }); */
+}
+	
+	
+function doHandleResponseResult(result){//jsonResult
+	//debugger
+	if(result.state==1){
+	  //初始化当前页记录(将日志数据呈现在页面上)
+	  doSetTableBodyRows(result.data);
+	}else{
+	  alert(result.message);
+	}
+}
+
+
+function doSetTableBodyRows(records){
+	   //1.获取tbody对象,并清空
+	   var tBody=$("#tbodyId");
+	   tBody.empty();//清空数据
+	   for(var i in records){
+		   	//2.1构建tr对象
+		   	var tr=$("<tr></tr>")
+		   	//2.2构建tds对象
+		   	var tds=doCreateTds(records[i]);
+		   	//2.3将td追加到tr中
+		   	tr.append(tds);
+		   	//2.4将tr追加到tbody中
+		   	tBody.append(tr);
+	   
+	}
+	
+	function doCreateTds(row){
+		 var tds=
+			 "<td>"+row.indentId+"</td>"+
+			 "<td>"+row.delivererId+"</td>"+	
+			 "<td>"+row.delivererOrderStarttime+"</td>"+
+			 "<td>"+row.delivererOrderEndtime+"</td>"+
+			 "<td>"+row.elivererOrderDate+"</td>";
+	    return tds;
+	}
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+

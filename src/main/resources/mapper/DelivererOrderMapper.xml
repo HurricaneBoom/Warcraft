@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.warcraft.dao.DelivererOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.warcraft.pojo.DelivererOrder" >
+    <id column="deliverer_id" property="delivererId" jdbcType="BIGINT" />
+    <result column="deliverer_order_starttime" property="delivererOrderStarttime" jdbcType="TIMESTAMP" />
+    <result column="deliverer_order_endtime" property="delivererOrderEndtime" jdbcType="TIMESTAMP" />
+    <result column="eliverer_order_date" property="elivererOrderDate" jdbcType="TIMESTAMP" />
+    <result column="indent_id" property="indentId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    deliverer_id, deliverer_order_starttime, deliverer_order_endtime, eliverer_order_date, 
+    indent_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.warcraft.pojo.DelivererOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from deliverer_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from deliverer_order
+    where deliverer_id = #{delivererId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from deliverer_order
+    where deliverer_id = #{delivererId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.warcraft.pojo.DelivererOrderExample" >
+    delete from deliverer_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.warcraft.pojo.DelivererOrder" >
+    insert into deliverer_order (deliverer_id, deliverer_order_starttime, 
+      deliverer_order_endtime, eliverer_order_date, 
+      indent_id)
+    values (#{delivererId,jdbcType=BIGINT}, #{delivererOrderStarttime,jdbcType=TIMESTAMP}, 
+      #{delivererOrderEndtime,jdbcType=TIMESTAMP}, #{elivererOrderDate,jdbcType=TIMESTAMP}, 
+      #{indentId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.warcraft.pojo.DelivererOrder" >
+    insert into deliverer_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="delivererId != null" >
+        deliverer_id,
+      </if>
+      <if test="delivererOrderStarttime != null" >
+        deliverer_order_starttime,
+      </if>
+      <if test="delivererOrderEndtime != null" >
+        deliverer_order_endtime,
+      </if>
+      <if test="elivererOrderDate != null" >
+        eliverer_order_date,
+      </if>
+      <if test="indentId != null" >
+        indent_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="delivererId != null" >
+        #{delivererId,jdbcType=BIGINT},
+      </if>
+      <if test="delivererOrderStarttime != null" >
+        #{delivererOrderStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delivererOrderEndtime != null" >
+        #{delivererOrderEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="elivererOrderDate != null" >
+        #{elivererOrderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indentId != null" >
+        #{indentId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.warcraft.pojo.DelivererOrderExample" resultType="java.lang.Integer" >
+    select count(*) from deliverer_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update deliverer_order
+    <set >
+      <if test="record.delivererId != null" >
+        deliverer_id = #{record.delivererId,jdbcType=BIGINT},
+      </if>
+      <if test="record.delivererOrderStarttime != null" >
+        deliverer_order_starttime = #{record.delivererOrderStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.delivererOrderEndtime != null" >
+        deliverer_order_endtime = #{record.delivererOrderEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.elivererOrderDate != null" >
+        eliverer_order_date = #{record.elivererOrderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.indentId != null" >
+        indent_id = #{record.indentId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update deliverer_order
+    set deliverer_id = #{record.delivererId,jdbcType=BIGINT},
+      deliverer_order_starttime = #{record.delivererOrderStarttime,jdbcType=TIMESTAMP},
+      deliverer_order_endtime = #{record.delivererOrderEndtime,jdbcType=TIMESTAMP},
+      eliverer_order_date = #{record.elivererOrderDate,jdbcType=TIMESTAMP},
+      indent_id = #{record.indentId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warcraft.pojo.DelivererOrder" >
+    update deliverer_order
+    <set >
+      <if test="delivererOrderStarttime != null" >
+        deliverer_order_starttime = #{delivererOrderStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delivererOrderEndtime != null" >
+        deliverer_order_endtime = #{delivererOrderEndtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="elivererOrderDate != null" >
+        eliverer_order_date = #{elivererOrderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indentId != null" >
+        indent_id = #{indentId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where deliverer_id = #{delivererId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.warcraft.pojo.DelivererOrder" >
+    update deliverer_order
+    set deliverer_order_starttime = #{delivererOrderStarttime,jdbcType=TIMESTAMP},
+      deliverer_order_endtime = #{delivererOrderEndtime,jdbcType=TIMESTAMP},
+      eliverer_order_date = #{elivererOrderDate,jdbcType=TIMESTAMP},
+      indent_id = #{indentId,jdbcType=BIGINT}
+    where deliverer_id = #{delivererId,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select * from deliverer_order where deliverer_order_endtime is null
+  </select>
+  
+  <select id="selectComplete" resultMap="BaseResultMap">
+  	select * from deliverer_order where deliverer_order_endtime is not null
+  </select>
+  
+  
+  <update id="updateEndtime" parameterType="Long">
+  update deliverer_order set deliverer_order_endtime=now() where indent_id=#{indent_id}
+  </update>
+  <update id="udpateIndentStatus" parameterType="Long">
+  update indent set indent_status='arrived' where indent_id=#{indent_id}
+  </update>
+</mapper>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.warcraft.dao.AbolishMapper" >
+  <resultMap id="BaseResultMap" type="com.warcraft.pojo.Abolish" >
+    <id column="abolish_id" property="abolishId" jdbcType="BIGINT" />
+    <result column="indent_id" property="indentId" jdbcType="BIGINT" />
+    <result column="abolish_time" property="abolishTime" jdbcType="TIMESTAMP" />
+    <result column="abolish_reason" property="abolishReason" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    abolish_id, indent_id, abolish_time, abolish_reason
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.warcraft.pojo.AbolishExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from abolish
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from abolish
+    where abolish_id = #{abolishId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from abolish
+    where abolish_id = #{abolishId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.warcraft.pojo.AbolishExample" >
+    delete from abolish
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.warcraft.pojo.Abolish" >
+    insert into abolish (abolish_id, indent_id, abolish_time, 
+      abolish_reason)
+    values (#{abolishId,jdbcType=BIGINT}, #{indentId,jdbcType=BIGINT}, #{abolishTime,jdbcType=TIMESTAMP}, 
+      #{abolishReason,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.warcraft.pojo.Abolish" >
+    insert into abolish
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="abolishId != null" >
+        abolish_id,
+      </if>
+      <if test="indentId != null" >
+        indent_id,
+      </if>
+      <if test="abolishTime != null" >
+        abolish_time,
+      </if>
+      <if test="abolishReason != null" >
+        abolish_reason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="abolishId != null" >
+        #{abolishId,jdbcType=BIGINT},
+      </if>
+      <if test="indentId != null" >
+        #{indentId,jdbcType=BIGINT},
+      </if>
+      <if test="abolishTime != null" >
+        #{abolishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="abolishReason != null" >
+        #{abolishReason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.warcraft.pojo.AbolishExample" resultType="java.lang.Integer" >
+    select count(*) from abolish
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update abolish
+    <set >
+      <if test="record.abolishId != null" >
+        abolish_id = #{record.abolishId,jdbcType=BIGINT},
+      </if>
+      <if test="record.indentId != null" >
+        indent_id = #{record.indentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.abolishTime != null" >
+        abolish_time = #{record.abolishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.abolishReason != null" >
+        abolish_reason = #{record.abolishReason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update abolish
+    set abolish_id = #{record.abolishId,jdbcType=BIGINT},
+      indent_id = #{record.indentId,jdbcType=BIGINT},
+      abolish_time = #{record.abolishTime,jdbcType=TIMESTAMP},
+      abolish_reason = #{record.abolishReason,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warcraft.pojo.Abolish" >
+    update abolish
+    <set >
+      <if test="indentId != null" >
+        indent_id = #{indentId,jdbcType=BIGINT},
+      </if>
+      <if test="abolishTime != null" >
+        abolish_time = #{abolishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="abolishReason != null" >
+        abolish_reason = #{abolishReason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where abolish_id = #{abolishId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.warcraft.pojo.Abolish" >
+    update abolish
+    set indent_id = #{indentId,jdbcType=BIGINT},
+      abolish_time = #{abolishTime,jdbcType=TIMESTAMP},
+      abolish_reason = #{abolishReason,jdbcType=VARCHAR}
+    where abolish_id = #{abolishId,jdbcType=BIGINT}
+  </update>
+</mapper>

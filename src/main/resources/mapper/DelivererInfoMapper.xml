@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.warcraft.dao.DelivererInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.warcraft.pojo.DelivererInfo" >
+    <id column="deliverer_id" property="delivererId" jdbcType="BIGINT" />
+    <result column="deliverer_name" property="delivererName" jdbcType="VARCHAR" />
+    <result column="deliverer_phone" property="delivererPhone" jdbcType="VARCHAR" />
+    <result column="deliverer_idcard" property="delivererIdcard" jdbcType="VARCHAR" />
+    <result column="deliverer_username" property="delivererUsername" jdbcType="VARCHAR" />
+    <result column="deliverer_password" property="delivererPassword" jdbcType="VARCHAR" />
+    <result column="deliverer_state" property="delivererState" jdbcType="VARCHAR" />
+    <result column="deliverer_creditworthiness" property="delivererCreditworthiness" jdbcType="INTEGER" />
+    <result column="deliverer_status" property="delivererStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    deliverer_id, deliverer_name, deliverer_phone, deliverer_idcard, deliverer_username, 
+    deliverer_password, deliverer_state, deliverer_creditworthiness, deliverer_status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.warcraft.pojo.DelivererInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from deliverer_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from deliverer_info
+    where deliverer_id = #{delivererId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from deliverer_info
+    where deliverer_id = #{delivererId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.warcraft.pojo.DelivererInfoExample" >
+    delete from deliverer_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.warcraft.pojo.DelivererInfo" >
+    insert into deliverer_info (deliverer_id, deliverer_name, deliverer_phone, 
+      deliverer_idcard, deliverer_username, deliverer_password, 
+      deliverer_state, deliverer_creditworthiness, 
+      deliverer_status)
+    values (#{delivererId,jdbcType=BIGINT}, #{delivererName,jdbcType=VARCHAR}, #{delivererPhone,jdbcType=VARCHAR}, 
+      #{delivererIdcard,jdbcType=VARCHAR}, #{delivererUsername,jdbcType=VARCHAR}, #{delivererPassword,jdbcType=VARCHAR}, 
+      #{delivererState,jdbcType=VARCHAR}, #{delivererCreditworthiness,jdbcType=INTEGER}, 
+      #{delivererStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.warcraft.pojo.DelivererInfo" >
+    insert into deliverer_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="delivererId != null" >
+        deliverer_id,
+      </if>
+      <if test="delivererName != null" >
+        deliverer_name,
+      </if>
+      <if test="delivererPhone != null" >
+        deliverer_phone,
+      </if>
+      <if test="delivererIdcard != null" >
+        deliverer_idcard,
+      </if>
+      <if test="delivererUsername != null" >
+        deliverer_username,
+      </if>
+      <if test="delivererPassword != null" >
+        deliverer_password,
+      </if>
+      <if test="delivererState != null" >
+        deliverer_state,
+      </if>
+      <if test="delivererCreditworthiness != null" >
+        deliverer_creditworthiness,
+      </if>
+      <if test="delivererStatus != null" >
+        deliverer_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="delivererId != null" >
+        #{delivererId,jdbcType=BIGINT},
+      </if>
+      <if test="delivererName != null" >
+        #{delivererName,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererPhone != null" >
+        #{delivererPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererIdcard != null" >
+        #{delivererIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererUsername != null" >
+        #{delivererUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererPassword != null" >
+        #{delivererPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererState != null" >
+        #{delivererState,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererCreditworthiness != null" >
+        #{delivererCreditworthiness,jdbcType=INTEGER},
+      </if>
+      <if test="delivererStatus != null" >
+        #{delivererStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.warcraft.pojo.DelivererInfoExample" resultType="java.lang.Integer" >
+    select count(*) from deliverer_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update deliverer_info
+    <set >
+      <if test="record.delivererId != null" >
+        deliverer_id = #{record.delivererId,jdbcType=BIGINT},
+      </if>
+      <if test="record.delivererName != null" >
+        deliverer_name = #{record.delivererName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delivererPhone != null" >
+        deliverer_phone = #{record.delivererPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delivererIdcard != null" >
+        deliverer_idcard = #{record.delivererIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delivererUsername != null" >
+        deliverer_username = #{record.delivererUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delivererPassword != null" >
+        deliverer_password = #{record.delivererPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delivererState != null" >
+        deliverer_state = #{record.delivererState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delivererCreditworthiness != null" >
+        deliverer_creditworthiness = #{record.delivererCreditworthiness,jdbcType=INTEGER},
+      </if>
+      <if test="record.delivererStatus != null" >
+        deliverer_status = #{record.delivererStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update deliverer_info
+    set deliverer_id = #{record.delivererId,jdbcType=BIGINT},
+      deliverer_name = #{record.delivererName,jdbcType=VARCHAR},
+      deliverer_phone = #{record.delivererPhone,jdbcType=VARCHAR},
+      deliverer_idcard = #{record.delivererIdcard,jdbcType=VARCHAR},
+      deliverer_username = #{record.delivererUsername,jdbcType=VARCHAR},
+      deliverer_password = #{record.delivererPassword,jdbcType=VARCHAR},
+      deliverer_state = #{record.delivererState,jdbcType=VARCHAR},
+      deliverer_creditworthiness = #{record.delivererCreditworthiness,jdbcType=INTEGER},
+      deliverer_status = #{record.delivererStatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.warcraft.pojo.DelivererInfo" >
+    update deliverer_info
+    <set >
+      <if test="delivererName != null" >
+        deliverer_name = #{delivererName,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererPhone != null" >
+        deliverer_phone = #{delivererPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererIdcard != null" >
+        deliverer_idcard = #{delivererIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererUsername != null" >
+        deliverer_username = #{delivererUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererPassword != null" >
+        deliverer_password = #{delivererPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererState != null" >
+        deliverer_state = #{delivererState,jdbcType=VARCHAR},
+      </if>
+      <if test="delivererCreditworthiness != null" >
+        deliverer_creditworthiness = #{delivererCreditworthiness,jdbcType=INTEGER},
+      </if>
+      <if test="delivererStatus != null" >
+        deliverer_status = #{delivererStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where deliverer_id = #{delivererId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.warcraft.pojo.DelivererInfo" >
+    update deliverer_info
+    set deliverer_name = #{delivererName,jdbcType=VARCHAR},
+      deliverer_phone = #{delivererPhone,jdbcType=VARCHAR},
+      deliverer_idcard = #{delivererIdcard,jdbcType=VARCHAR},
+      deliverer_username = #{delivererUsername,jdbcType=VARCHAR},
+      deliverer_password = #{delivererPassword,jdbcType=VARCHAR},
+      deliverer_state = #{delivererState,jdbcType=VARCHAR},
+      deliverer_creditworthiness = #{delivererCreditworthiness,jdbcType=INTEGER},
+      deliverer_status = #{delivererStatus,jdbcType=VARCHAR}
+    where deliverer_id = #{delivererId,jdbcType=BIGINT}
+  </update>
+  
+     <update id="updateStateById" >
+     	update deliverer_info set deliverer_state ='rest' where deliverer_id=#{id}
+     </update> 
+     
+     
+     <update id="updateStateById1" >
+     	update deliverer_info set deliverer_state ='working' where deliverer_id=#{id}
+     </update> 
+     
+     <select id="findObject" resultMap="BaseResultMap">
+     	select * from deliverer_info where deliverer_username=#{username}
+     	and deliverer_password=#{password}
+     </select>
+     
+     
+     
+</mapper>
