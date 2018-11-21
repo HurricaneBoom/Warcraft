@@ -1,0 +1,7 @@
+com\warcraft\controller\IndentController.class
+com\warcraft\controller\PageController.class
+com\warcraft\controller\BuyerInfoController.class
+com\warcraft\controller\DelivererInfoController.class
+com\warcraft\controller\StoreInfoController.class
+com\warcraft\controller\BossInfoController.class
+com\warcraft\controller\ManagerInfoController.class

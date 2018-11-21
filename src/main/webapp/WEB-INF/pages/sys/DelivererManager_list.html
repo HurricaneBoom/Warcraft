@@ -1,0 +1,237 @@
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">Deliverer-Manager</h3>
+
+				<div class="box-tools">
+					<div class="input-group input-group-sm" style="width: 350px;">
+						<input type="text" name="table_search" id="searchNameId"
+							class="form-control pull-right" placeholder="鐢ㄦ埛鍚�">
+
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default btn-search">
+								<i class="fa fa-search"></i>
+							</button>
+							<button type="button" class="btn btn-default btn-delete">鏌ョ湅璁㈠崟</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.box-header -->
+
+			<div class="box-body table-responsive no-padding">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>外卖员id</th>
+							<th>姓名</th>
+							<th>手机号</th>
+							<th>身份证号</th>
+							<th>账号</th>
+							<th>登录密码</th>
+							<th>工作状态</th>
+							<th>信誉度</th>
+							<th>外卖员状态</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyId"></tbody>
+				</table>
+			</div>
+			<div id="pageId" class="box-footer clearfix"></div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var url="doPageUI.do";
+		//ajax function
+		$("#pageId").load(url,function(){
+			doGetObject();//閸︺劍顒濇担宥囩枂鐎圭偟骞囧鍌涱劄閸旂姾娴囬惃鍕窗閻ㄥ嫭妲告穱婵婄槈娑撱倓閲滃鍌涱劄閻ㄥ嫰銆庢惔蹇斿⒔鐞涳拷
+		});//load()閸戣姤鏆熸惔鏇炵湴娴兼碍鐎绡╩lHttpRequest閿涘苯褰傜挧宄扮磽濮濄儴顕Ч锟�
+		$(".input-group-btn")
+		.on("click",".btn-search",doQueryObjects)
+		.on("click",".btn-delete",doDeleteObjects)
+		$("tbody").on("click",".btn-down",doUpdateObjects)
+		.on("click",".btn-resume",doResumeObjects)
+		 $("thead").on("change","#checkAll",
+				 doChangeTBodyCheckBoxState);
+		 //閸楁洟锟藉褰夐幋鎰弿闁拷
+		 $("#tbodyId").on("change",".cItem",doChangeTHeadCheckBoxState);
+		// $(".cItem").change(doChangeTHeadCheckBoxState);
+
+	});
+	//灏佸喕涔板
+	function doUpdateObjects(){
+		var delivererId=$(this).parent("td").parent("tr").data("delivererId");
+		var params={"delivererId":delivererId}
+		var url="delivererinfo/doUpdateBydelivererId.do"
+		$.post(url,params,function(result){
+			if(result.state==1){
+				alert(result.message);
+				doGetObject();
+			}else{
+				alert(result.message);
+			}
+		})
+	};
+	//鎭㈠涔板
+	function doResumeObjects(){
+		var delivererId=$(this).parent("td").parent("tr").data("delivererId");
+		var params={"delivererId":delivererId}
+		var url="delivererinfo/doResumeBydelivererId.do"
+		$.post(url,params,function(result){
+			if(result.state==1){
+				alert(result.message);
+				doGetObject();
+			}else{
+				alert(result.message);
+			}
+		})
+	};
+	
+	//鐠佸墽鐤唗head娑撶挮heckbox閻ㄥ嫬锟斤拷
+	function doChangeTHeadCheckBoxState(){
+		//1.閼惧嘲绶眛body娑撶挮heck閻樿埖锟戒礁锟斤拷 閹笛嗩攽&&閹垮秳缍旈惃鍕波閺嬶拷
+		var flag=true;
+		$("#tbodyId input[type='checkbox']")
+		.each(function(){
+		flag=	
+			flag&&$(this).prop("checked");
+		});
+		//2.鐠佸墽鐤唗head娑撶挮heckbox閻ㄥ嫬锟斤拷
+		$("#checkAll").prop("checked",flag);
+	}
+	//thead 娑撶挮heckbox閸忋劑锟藉鎼锋担锟�
+	function doChangeTBodyCheckBoxState(){
+		//1.閼惧嘲褰噒head娑擃厼缍嬮崜宄渉eckbox鐎电钖勯悩鑸碉拷锟�
+	 var state=
+		 $(this).prop("checked");
+		//2.鐠佸墽鐤唗body娑撶挮heckbox鐎电钖勯惃鍕Ц閹礁锟斤拷
+		//閺傝顢�1
+		/* $("#tbodyId input[type='checkbox']")
+		.each(function(){
+			$(this).prop("checked",state);
+		}); */
+		//閺傝顢�2
+		$("#tbodyId input[type='checkbox']").prop("checked",state);
+	}
+
+	
+	//瑜版悤body娑撶挮heckbox閻ㄥ嫮濮搁幀浣稿絺閻㈢喎褰夐崠鏍︿簰閸氾拷
+	   //娣囶喗鏁紅head娑擃厼鍙忛柅澶婂帗缁辩姷娈戦悩鑸碉拷浣革拷绗猴拷锟�
+	   function doChangeTHeadCheckBoxState(){
+		  //1.鐠佹儳鐣炬妯款吇閻樿埖锟戒礁锟斤拷
+		  var flag=true;
+		  //2.鏉╊厺鍞幍锟介張濉糱ody娑擃厾娈慶heckbox閸婄厧鑻熸潻娑滎攽娑撳孩鎼锋担锟�
+		  $("#tbodyId input[name='cItem']")
+		  .each(function(){
+			  flag=flag&$(this).prop("checked")
+		  });
+		  //3.娣囶喗鏁奸崗銊╋拷澶婂帗缁辩嚲heckbox閻ㄥ嫬锟介棿璐焒lag
+		  $("#checkAll").prop("checked",flag);
+	   }
+
+	
+	function doDeleteObjects(){
+		//1.閼惧嘲褰囬悽銊﹀煕闁鑵戠拋鏉跨秿閻ㄥ埇d
+		var ids=doGetCheckedIds();
+		if(ids.length==0){
+			alert("鐠囧嘲鍘涢柅澶嬪");
+			return;
+		}
+		var params={"ids":ids.toString()};
+		var url="log/doDeleteObjects.do";
+		$.post(url,params,function(result){
+			if(result.state==1){
+				alert(result.message);
+				var pageCurrent=$("#pageId").data("pageCurrent");
+				var pageCount=$("#pageId").data("pageCount");
+				if(pageCurrent==pageCount){
+					$("#pageId").data("pageCount",pageCount+1);
+				}
+				doGetObject();
+			}else{
+				alert(result.message);
+			}
+		})
+	}
+	function doGetCheckedIds(){
+		var array=[];
+		$("#tbodyId input[type='checkbox']")
+		.each(function(){
+			//console.log($(this));
+			if($(this).prop("checked")){
+				array.push($(this).val());
+			}
+		});
+		return array;
+	}
+	function doQueryObjects(){
+		$("#pageId").data("pageCurrent",1);
+		doGetObject();
+	}
+	function doGetObject(){
+		var logUrl="delivererinfo/doFindPageObjects.do";
+		var pageCurrent=$("#pageId").data("pageCurrent");
+		if(!pageCurrent)pageCurrent=1;
+		var params={"pageCurrent":pageCurrent};
+		var delivererName=$("#searchNameId").val();
+		if(delivererName)params.delivererName=delivererName;
+		$.ajax({//鎼存洖鐪扮亸浣筋棅娴滃摣mlHttpRequest
+			url:logUrl, 
+			
+			data:params,//{pageCurrent:1}
+			dataType:"json",//json濡楀棙鐏﹂懛顏勫З閹跺﹣瑕嗘潪顒佸床閹存劕顕挒鈽呯礉濮濄倕褰為崣顖欎簰閻胶鏆�
+			success:function(result){
+				doHandleResponseResult(result);
+			},
+		});//GET,ASYNC:TRUE,dataType:json
+		
+		function doHandleResponseResult(result){
+			if(result.state==1){
+				doSetTableBodyRows(result.data.records);
+				doSetPagination(result.data);//ajax
+			}else{
+				alert("鏌ヨ閿欒");
+			}
+			console.log(result);
+		}
+		function doSetTableBodyRows(records){
+			var tBody=$("#tbodyId");
+			tBody.empty();//濞撳懐鈹栭弫鐗堝祦
+			for(var i in records){
+				//鏋勫缓tr瀵硅薄
+				var tr=$("<tr></tr>");
+				 tr.data("delivererId",records[i].delivererId);
+				 console.log(tr.data("delivererId"));
+				var tds=doCreateTds(records[i],i);//娣诲姞搴忓彿i
+				tr.append(tds);
+				tBody.append(tr);
+			}
+		}
+			 function doCreateTds(row,i){
+			     var tds=
+			    	 "<td>"+row.delivererId+"</td>"+
+			    	 "<td>"+row.delivererName+"</td>"+
+			    	 "<td>"+row.delivererPhone+"</td>"+
+			    	 "<td>"+row.delivererIdcard+"</td>"+
+			    	 "<td>"+row.delivererUsername+"</td>"+
+			    	 "<td>"+row.delivererPassword+"</td>"+
+			    	 "<td>"+row.delivererState+"</td>"+
+			    	 "<td>"+row.delivererCreditworthiness+"</td>"+
+			    	 "<td>"+row.delivererStatus+"</td>"+
+			    	 "<td><button type='button' class='btn btn-default btn-down'>"+"封冻"+"</button></td>"+
+			    	 "<td><button type='button' class='btn btn-default btn-resume'>"+"恢复"+"</button></td>"+
+			    	 "<td><button type='button' class='btn btn-default btn-believe'>"+"信誉度"+"</button></td>";
+			    	 return tds;
+			 }
+
+	}
+</script>
+
+
+
+

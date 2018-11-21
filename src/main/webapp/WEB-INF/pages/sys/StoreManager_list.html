@@ -1,0 +1,246 @@
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">Boss-Manager</h3>
+
+				<div class="box-tools">
+					<div class="input-group input-group-sm" style="width: 350px;">
+						<input type="text" name="table_search" id="searchNameId"
+							class="form-control pull-right" placeholder="店铺名">
+
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default btn-search">
+								<i class="fa fa-search"></i>
+							</button>
+							<button type="button" class="btn btn-default btn-delete">详细</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.box-header -->
+
+			<div class="box-body table-responsive no-padding">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>店铺id</th>
+							<th>店铺名称</th>
+							<th>店铺地址</th>
+							<th>店铺电话</th>
+							<th>店铺公告</th>
+							<th>店铺开店时间</th>
+							<th>店铺状态</th>
+							<th>店铺优惠详情</th>
+							<th>店铺配送费用</th>
+							<th>店铺配送范围</th>
+							<th>店铺到达时间</th>
+							<th>店铺外送状态</th>
+							<th>店铺信誉度</th>
+							<th>下架</th>
+							<th>恢复</th>
+							<th>信誉度</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyId"></tbody>
+				</table>
+			</div>
+			<div id="pageId" class="box-footer clearfix"></div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		doGetObject();
+		$(".input-group-btn")
+		.on("click",".btn-search",doQueryObjects)
+		.on("click",".btn-delete",doDeleteObjects)
+		$("tbody")
+		.on("click",".btn-down",doUpdateObjects)
+		.on("click",".btn-resume",doResumeObjects)
+		//thead濞戞挾鎸甴eckbox閻庣數顢婇挅鍕鐎ｂ晜顐� 婵炲鍔岄崬锟�
+		 $("thead").on("change","#checkAll",
+				 doChangeTBodyCheckBoxState);
+		 //闁告娲熼敓钘夘槸瑜板骞嬮幇顒�寮块梺顐嫹
+		 $("#tbodyId").on("change",".cItem",doChangeTHeadCheckBoxState);
+		// $(".cItem").change(doChangeTHeadCheckBoxState);
+
+	});
+	//鐏忎礁鍠曟稊鏉款啀
+	function doUpdateObjects(){
+		var storeId=$(this).parent("td").parent("tr").data("storeId");
+		var params={"storeId":storeId}
+		var url="bossinfo/doUpdateByStoreId.do"
+		$.post(url,params,function(result){
+			if(result.state==1){
+				alert(result.message);
+				doGetObject();
+			}else{
+				alert(result.message);
+			}
+		})
+	};
+	function doResumeObjects(){
+		var storeId=$(this).parent("td").parent("tr").data("storeId");
+		var params={"storeId":storeId}
+		var url="bossinfo/doResumeByStoreId.do"
+		$.post(url,params,function(result){
+			if(result.state==1){
+				alert(result.message);
+				doGetObject();
+			}else{
+				alert(result.message);
+			}
+		})
+	};
+	
+	
+	//閻犱礁澧介悿鍞梙ead濞戞挾鎸甴eckbox闁汇劌瀚敓鏂ゆ嫹
+	function doChangeTHeadCheckBoxState(){
+		//1.闁兼儳鍢茬欢鐪沚ody濞戞挾鎸甴eck闁绘鍩栭敓鎴掔閿熸枻鎷� 闁圭瑳鍡╂斀&&闁瑰灝绉崇紞鏃堟儍閸曨厾娉㈤柡瀣舵嫹
+		var flag=true;
+		$("#tbodyId input[type='checkbox']")
+		.each(function(){
+		flag=	
+			flag&&$(this).prop("checked");
+		});
+		//2.閻犱礁澧介悿鍞梙ead濞戞挾鎸甴eckbox闁汇劌瀚敓鏂ゆ嫹
+		$("#checkAll").prop("checked",flag);
+	}
+	//thead 濞戞挾鎸甴eckbox闁稿繈鍔戦敓钘夘槹閹奸攱鎷呴敓锟�
+	function doChangeTBodyCheckBoxState(){
+		//1.闁兼儳鍢茶ぐ鍣抙ead濞戞搩鍘肩紞瀣礈瀹勬笁eckbox閻庣數顢婇挅鍕偐閼哥鎷烽敓锟�
+	 var state=
+		 $(this).prop("checked");
+		//2.閻犱礁澧介悿鍞梑ody濞戞挾鎸甴eckbox閻庣數顢婇挅鍕儍閸曨厼笑闁诡兛绀侀敓鏂ゆ嫹
+		//闁哄倽顫夐、锟�1
+		/* $("#tbodyId input[type='checkbox']")
+		.each(function(){
+			$(this).prop("checked",state);
+		}); */
+		//闁哄倽顫夐、锟�2
+		$("#tbodyId input[type='checkbox']").prop("checked",state);
+	}
+
+	
+	//鐟滅増鎮ody濞戞挾鎸甴eckbox闁汇劌瀚慨鎼佸箑娴ｇ绲洪柣銏㈠枎瑜板宕犻弽锔跨鞍闁告熬鎷�
+	   //濞ｅ浂鍠楅弫绱卙ead濞戞搩鍘奸崣蹇涙焻婢跺﹤甯楃紒杈╁Х濞堟垿鎮╅懜纰夋嫹娴ｉ潻鎷风粭鐚存嫹閿燂拷
+	   function doChangeTHeadCheckBoxState(){
+		  //1.閻犱焦鍎抽悾鐐渶濡鍚囬柣妯垮煐閿熸垝绀侀敓鏂ゆ嫹
+		  var flag=true;
+		  //2.閺夆晩鍘洪崬顒勫箥閿熶粙寮垫繅绯眔dy濞戞搩鍘惧▓鎱秇eckbox闁稿﹦鍘ч懟鐔告交濞戞粠鏀藉☉鎾冲閹奸攱鎷呴敓锟�
+		  $("#tbodyId input[name='cItem']")
+		  .each(function(){
+			  flag=flag&$(this).prop("checked")
+		  });
+		  //3.濞ｅ浂鍠楅弫濂稿礂閵娾晪鎷锋径濠傚笚缂佽京鍤瞙eckbox闁汇劌瀚敓浠嬫？鐠愮剴lag
+		  $("#checkAll").prop("checked",flag);
+	   }
+
+	
+	function doDeleteObjects(){
+		//1.闁兼儳鍢茶ぐ鍥偨閵婏箑鐓曢梺顐㈩槷閼垫垹鎷嬮弶璺ㄧЭ闁汇劌鍩嘾
+		var ids=doGetCheckedIds();
+		if(ids.length==0){
+			alert("閻犲洤鍢查崢娑㈡焻婢跺顏�");
+			return;
+		}
+		var params={"ids":ids.toString()};
+		var url="log/doDeleteObjects.do";
+		$.post(url,params,function(result){
+			if(result.state==1){
+				alert(result.message);
+				var pageCurrent=$("#pageId").data("pageCurrent");
+				var pageCount=$("#pageId").data("pageCount");
+				if(pageCurrent==pageCount){
+					$("#pageId").data("pageCount",pageCount+1);
+				}
+				doGetObject();
+			}else{
+				alert(result.message);
+			}
+		})
+	}
+	function doGetCheckedIds(){
+		var array=[];
+		$("#tbodyId input[type='checkbox']")
+		.each(function(){
+			//console.log($(this));
+			if($(this).prop("checked")){
+				array.push($(this).val());
+			}
+		});
+		return array;
+	}
+	function doQueryObjects(){
+		$("#pageId").data("storeId",1);
+		doGetObject();
+	}
+	function doGetObject(){
+		
+		var logUrl="storeinfo/findStoreAll.do";
+		var storeId=$.cookie('STOREID');
+		console.log(storeId);
+		var params={"storeId":storeId};
+		$.ajax({//閹煎瓨娲栭惇鎵焊娴ｇ瓔妫呭ù婊冩懀mlHttpRequest
+			url:logUrl, 
+			data:params,//{pageCurrent:1}
+			dataType:"json",//json婵℃妫欓悘锕傛嚊椤忓嫬袟闁硅泛锕ｇ憰鍡樻姜椤掍礁搴婇柟瀛樺姇椤曨喚鎸掗埥鍛婵縿鍊曡ぐ鐐哄矗椤栨瑤绨伴柣顏冭兌閺嗭拷
+			success:function(result){
+				doHandleResponseResult(result);
+			},
+		});//GET,ASYNC:TRUE,dataType:json
+		
+		function doHandleResponseResult(result){
+			
+			if(result.state==1){
+				doSetTableBodyRows(result.data);
+				doSetPagination(result.data);//ajax
+			}else{
+				alert("鏌ヨ閿欒");
+			}
+			console.log(result);
+		}
+		function doSetTableBodyRows(records){
+			
+			var tBody=$("#tbodyId");
+			tBody.empty();//婵炴挸鎳愰埞鏍极閻楀牆绁�
+				var tds=doCreateTds(records);//濞ｈ濮炴惔蹇撳娇i
+			for(var i in records){
+				//閺嬪嫬缂搕r鐎电钖�
+				var tr=$("<tr></tr>");
+				 tr.data("storeId",records.storeId);
+				 console.log(tr.data("storeId"));
+			}
+				tr.append(tds);
+				tBody.append(tr);
+		}
+			 function doCreateTds(row){
+			     var tds=
+			    	 "<td>"+row.storeId+"</td>"+
+			    	 "<td>"+row.storeName+"</td>"+
+			    	 "<td>"+row.storeAddr+"</td>"+
+			    	 "<td>"+row.storeCal+"</td>"+
+			    	 "<td>"+row.storeNotice+"</td>"+
+			    	 "<td>"+row.storeTime+"</td>"+
+			    	 "<td>"+row.storeState+"</td>"+
+			    	 "<td>"+row.storeDiscount+"</td>"+
+			    	 "<td>"+row.storeDeliveryprice+"</td>"+
+			    	 "<td>"+row.storeDeliveryrange+"</td>"+
+			    	 "<td>"+row.storeDelivertime+"</td>"+
+			    	 "<td>"+row.storeDeliverystate+"</td>"+
+			    	 "<td>"+row.storeCreditworthiness+"</td>"+
+			    	 "<td><button type='button' class='btn btn-default btn-down' id='id-down'>"+"下架"+"</button></td>"+
+			    	 "<td><button type='button' class='btn btn-default btn-resume'>"+"恢复"+"</button></td>"+
+			    	 "<td><button type='button' class='btn btn-default btn-believe'>"+"信誉度"+"</button></td>";
+			    	 return tds;
+			 }
+
+	}
+</script>
+
+
+
+

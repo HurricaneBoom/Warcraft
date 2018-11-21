@@ -1,0 +1,54 @@
+<ul class="pagination pagination-sm no-margin pull-right">
+	<li><a class="first">首页</a></li>
+	<li><a class="pre">上一页</a></li>
+	<li><a class="next">下一页</a></li>
+	<li><a class="last">尾页</a></li>
+	<li><a class="rowCount">总记录数(0)</a></li>
+	<li><a class="pageCount">总页数(0)</a></li>
+	<li><a class="pageCurrent">当前页(1)</a></li>
+</ul>
+<script type="text/javascript">
+	$(function(){
+		//浜嬩欢娉ㄥ唽(琛ㄧず鍦�#pageId瀵瑰簲瀹瑰櫒瀵硅薄鐨勭浉鍏冲瓙鍏冪礌涓敞鍐�)
+		$("#pageId").on("click",".first,.pre,.next,.last",doJumpToPage)
+	});
+ 	//鍒濆鍖栧垎椤典俊鎭�
+ 	function doSetPagination(pageObject){
+ 		//鍒濆鍖栧垎椤垫暟鎹�
+ 		$(".rowCount").html("总记录数("+pageObject.rowCount+")");
+ 		$(".pageCount").html("总页数("+pageObject.pageCount+")");
+ 		$(".pageCurrent").html("当前页("+pageObject.pageCurrent+")");
+ 		//data(key,[value])璧嬪�硷紝data(key)鍙栧��
+ 		$("#pageId").data("pageCurrent",pageObject.pageCurrent);
+ 		$("#pageId").data("pageCount",pageObject.pageCount)
+ 	}
+ 	//鍩轰簬pagecurrent杩涜涓嬩竴姝ョ殑鏌ヨ
+ 	function doJumpToPage(){
+ 		debugger
+ 		//1.鑾峰彇鐐瑰嚮瀵硅薄class灞炴��,鍩轰簬灞炴�у�煎垽瀹氬璞�
+ 		//鍩轰簬prop鏂规硶鐨勮幏鍙朿lass灞炴�у��
+ 		var cls=$(this).prop("class");
+ 		//2.鍩轰簬class灞炴�у�肩殑涓嶅悓淇敼pagecurrent鐨勫��
+ 		//2.1鑾峰彇pageCurrent鐨勫��
+ 		var pageCurrent=$("#pageId").data("pageCurrent");
+ 		//2.2鑾峰彇pagecount鐨勫��
+ 		var pageCount=$("#pageId").data("pageCount");
+ 		//2.3淇敼pagecurrent鐨勫��
+ 		if(cls=="first"){
+ 			pageCurrent=1;
+ 		}else if(cls=="next"&&pageCurrent<pageCount){
+ 			pageCurrent++;
+ 		}else if(cls=="pre"&&pageCurrent>1){
+ 			pageCurrent--;
+ 		}else if(cls=="last"){
+ 			pageCurrent=pageCount;
+ 		}
+ 		//3.鍩轰簬pagecurrent鏂扮殑鍊艰繘琛屽綋鍓嶉〉鏌ヨ
+ 		//3.1閲嶆柊缁戝畾pageCurrent鍊�
+ 		$("#pageId").data("pageCurrent",pageCurrent);
+ 		//3.2鍩轰簬pageCurrent杩涜鍒嗛〉鏌ヨ
+ 		doGetObject();
+ 	}
+</script>
+
+

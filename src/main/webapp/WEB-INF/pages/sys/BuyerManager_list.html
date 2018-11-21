@@ -1,0 +1,240 @@
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">Buyer-Manager</h3>
+
+				<div class="box-tools">
+					<div class="input-group input-group-sm" style="width: 350px;">
+						<input type="text" name="table_search" id="searchNameId"
+							class="form-control pull-right" placeholder="用户名">
+
+						<div class="input-group-btn">
+							<button type="button" class="btn btn-default btn-search">
+								<i class="fa fa-search"></i>
+							</button>
+							<button type="button" class="btn btn-default btn-delete">查看订单</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.box-header -->
+
+			<div class="box-body table-responsive no-padding">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>买家ID</th>
+							<th>姓名</th>
+							<th>性别</th>
+							<th>电话</th>
+							<th>地址</th>
+							<th>身份证号</th>
+							<th>买家名</th>
+							<th>买家密码</th>
+							<th>买家状态</th>
+							<th>封冻</th>
+							<th>恢复</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyId"></tbody>
+				</table>
+			</div>
+			<div id="pageId" class="box-footer clearfix"></div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var url="doPageUI.do";
+		//ajax function
+		$("#pageId").load(url,function(){
+			doGetObject();//鍦ㄦ浣嶇疆瀹炵幇寮傛鍔犺浇鐨勭洰鐨勬槸淇濊瘉涓や釜寮傛鐨勯『搴忔墽琛�
+		});//load()鍑芥暟搴曞眰浼氭瀯寤篨mlHttpRequest锛屽彂璧峰紓姝ヨ姹�
+		$(".input-group-btn")
+		.on("click",".btn-search",doQueryObjects)
+		.on("click",".btn-delete",doDeleteObjects)
+		$("tbody").on("click",".btn-down",doUpdateObjects)
+		.on("click",".btn-resume",doResumeObjects)
+		//thead涓璫heckbox瀵硅薄浜嬩欢 娉ㄥ唽
+		 $("thead").on("change","#checkAll",
+				 doChangeTBodyCheckBoxState);
+		 //鍗曢�夊彉鎴愬叏閫�
+		 $("#tbodyId").on("change",".cItem",doChangeTHeadCheckBoxState);
+		// $(".cItem").change(doChangeTHeadCheckBoxState);
+
+	});
+	//封冻买家
+	function doUpdateObjects(){
+		var buyerId=$(this).parent("td").parent("tr").data("buyerId");
+		var params={"buyerId":buyerId}
+		var url="buyerinfo/doUpdateByBuyerId.do"
+		$.post(url,params,function(result){
+			if(result.state==1){
+				alert(result.message);
+				doGetObject();
+			}else{
+				alert(result.message);
+			}
+		})
+	};
+	//恢复买家
+	function doResumeObjects(){
+		var buyerId=$(this).parent("td").parent("tr").data("buyerId");
+		var params={"buyerId":buyerId}
+		var url="buyerinfo/doResumeByBuyerId.do"
+		$.post(url,params,function(result){
+			if(result.state==1){
+				alert(result.message);
+				doGetObject();
+			}else{
+				alert(result.message);
+			}
+		})
+	};
+	
+	//璁剧疆thead涓璫heckbox鐨勫��
+	function doChangeTHeadCheckBoxState(){
+		//1.鑾峰緱tbody涓璫heck鐘舵�佸�� 鎵ц&&鎿嶄綔鐨勭粨鏋�
+		var flag=true;
+		$("#tbodyId input[type='checkbox']")
+		.each(function(){
+		flag=	
+			flag&&$(this).prop("checked");
+		});
+		//2.璁剧疆thead涓璫heckbox鐨勫��
+		$("#checkAll").prop("checked",flag);
+	}
+	//thead 涓璫heckbox鍏ㄩ�夋搷浣�
+	function doChangeTBodyCheckBoxState(){
+		//1.鑾峰彇thead涓綋鍓峜heckbox瀵硅薄鐘舵��
+	 var state=
+		 $(this).prop("checked");
+		//2.璁剧疆tbody涓璫heckbox瀵硅薄鐨勭姸鎬佸��
+		//鏂规1
+		/* $("#tbodyId input[type='checkbox']")
+		.each(function(){
+			$(this).prop("checked",state);
+		}); */
+		//鏂规2
+		$("#tbodyId input[type='checkbox']").prop("checked",state);
+	}
+
+	
+	//褰搕body涓璫heckbox鐨勭姸鎬佸彂鐢熷彉鍖栦互鍚�
+	   //淇敼thead涓叏閫夊厓绱犵殑鐘舵�佸�笺��
+	   function doChangeTHeadCheckBoxState(){
+		  //1.璁惧畾榛樿鐘舵�佸��
+		  var flag=true;
+		  //2.杩唬鎵�鏈塼body涓殑checkbox鍊煎苟杩涜涓庢搷浣�
+		  $("#tbodyId input[name='cItem']")
+		  .each(function(){
+			  flag=flag&$(this).prop("checked")
+		  });
+		  //3.淇敼鍏ㄩ�夊厓绱燾heckbox鐨勫�间负flag
+		  $("#checkAll").prop("checked",flag);
+	   }
+
+	
+	function doDeleteObjects(){
+		//1.鑾峰彇鐢ㄦ埛閫変腑璁板綍鐨刬d
+		var ids=doGetCheckedIds();
+		if(ids.length==0){
+			alert("璇峰厛閫夋嫨");
+			return;
+		}
+		var params={"ids":ids.toString()};
+		var url="log/doDeleteObjects.do";
+		$.post(url,params,function(result){
+			if(result.state==1){
+				alert(result.message);
+				var pageCurrent=$("#pageId").data("pageCurrent");
+				var pageCount=$("#pageId").data("pageCount");
+				if(pageCurrent==pageCount){
+					$("#pageId").data("pageCount",pageCount+1);
+				}
+				doGetObject();
+			}else{
+				alert(result.message);
+			}
+		})
+	}
+	function doGetCheckedIds(){
+		var array=[];
+		$("#tbodyId input[type='checkbox']")
+		.each(function(){
+			//console.log($(this));
+			if($(this).prop("checked")){
+				array.push($(this).val());
+			}
+		});
+		return array;
+	}
+	function doQueryObjects(){
+		$("#pageId").data("pageCurrent",1);
+		doGetObject();
+	}
+	function doGetObject(){
+		var logUrl="buyerinfo/doFindPageObjects.do";
+		var pageCurrent=$("#pageId").data("pageCurrent");
+		if(!pageCurrent)pageCurrent=1;
+		var params={"pageCurrent":pageCurrent};
+		var buyerName=$("#searchNameId").val();
+		if(buyerName)params.buyerName=buyerName;
+		$.ajax({//搴曞眰灏佽浜哫mlHttpRequest
+			url:logUrl, 
+			
+			data:params,//{pageCurrent:1}
+			dataType:"json",//json妗嗘灦鑷姩鎶婁覆杞崲鎴愬璞★紝姝ゅ彞鍙互鐪佺暐
+			success:function(result){
+				doHandleResponseResult(result);
+			},
+		});//GET,ASYNC:TRUE,dataType:json
+		
+		function doHandleResponseResult(result){
+			if(result.state==1){
+				doSetTableBodyRows(result.data.records);
+				doSetPagination(result.data);//ajax
+			}else{
+				alert("查询错误");
+			}
+			console.log(result);
+		}
+		function doSetTableBodyRows(records){
+			var tBody=$("#tbodyId");
+			tBody.empty();//娓呯┖鏁版嵁
+			for(var i in records){
+				//构建tr对象
+				var tr=$("<tr></tr>");
+				 tr.data("buyerId",records[i].buyerId);
+				 console.log(tr.data("buyerId"));
+				var tds=doCreateTds(records[i],i);//添加序号i
+				tr.append(tds);
+				tBody.append(tr);
+			}
+		}
+			 function doCreateTds(row,i){
+				 
+			     var tds=
+			    	 "<td>"+row.buyerId+"</td>"+
+			    	 "<td>"+row.buyerName+"</td>"+
+			    	 "<td>"+row.buyerGender+"</td>"+
+			    	 "<td>"+row.buyerTel+"</td>"+
+			    	 "<td>"+row.buyerAddr+"</td>"+
+			    	 "<td>"+row.buyerCard+"</td>"+
+			    	 "<td>"+row.buyerUsername+"</td>"+
+			    	 "<td>"+row.buyerPassword+"</td>"+
+			    	 "<td>"+row.buyerStatus+"</td>"+
+			    	 "<td><button type='button' class='btn btn-default btn-down' id='id-down'>"+"封冻"+"</button></td>"+
+			    	 "<td><button type='button' class='btn btn-default btn-resume'>"+"恢复"+"</button></td>";
+			    	 return tds;
+			 }
+
+	}
+</script>
+
+
+
+
